@@ -1,0 +1,29 @@
+{{ partial "header.html" . }}
+
+{{ if eq .Section "post" }}
+<main class="content" role="main">
+  <aside class="article__toc">
+    <span class="article__toc__title">Contents</span>
+
+    {{ .TableOfContents }}
+  </aside>
+  <article class="article">
+    <h1 class="article__title">{{ .Title }}</h1>
+    <p class="article__meta">
+      <span>Vol. {{ index .Params.volumes 0 }} <small>∙</small> {{ .Date.Format "April 2006" }}</span>
+      <span>by {{ $.Param "author" }}</span>
+    </p>
+    <hr>
+
+    <div class="article__content">
+      {{ .Content }}
+    </div>
+  </article>
+
+</main>
+
+{{ else if eq .Title "About" }}
+{{ partial "about.html" . }}
+{{ end }}
+
+{{ partial "footer.html" . }}

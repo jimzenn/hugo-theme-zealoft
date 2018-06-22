@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+
+  {{ if .IsHome }}
+  <body class="home">
+  {{ else if (isset .Params "about")}}
+  <body class="about">
+  {{ else if (eq .Kind "taxonomy")}}
+  <body class="taxonomy">
+  {{ else }}
+  <body>
+  {{ end }}
+    <header class="header" id="header">
+      <nav class="nav">
+        <span class="nav__logo">
+          <a  href="{{ .Site.BaseURL }}">
+          {{ .Site.Title }}
+          </a>
+          {{ if ne $.Title "Jim Zenn" }}
+            <b class="nav__section">
+              {{ $.Title }}
+            </b>
+          {{ end }}
+          </span>
+        <div class="nav__menu">
+          <button class="nav__toggle" id="menu-toggle"></button>
+          <ul class="nav__list">
+            {{ range .Site.Menus.main }}
+            <li class="nav__item"><a class="nav__link" href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+      </nav>
+      <div class="nav__menu--collapsable" id="collapsable-menu">
+        <ul class="nav__list--collapsable">
+          {{ range .Site.Menus.main }}
+          <li class="nav__item"><a class="nav__link" href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+    </header>

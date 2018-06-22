@@ -1,0 +1,20 @@
+<div class="bio">
+  <div class="left">
+    <img id="my-photo" src="/images/photo.png" alt="Jim Zenn">
+    <div id="my-info">
+      <span id="my-name">{{ .Site.Params.my_name }}</span>
+      <a id="my-email" href="mailto:{{ .Site.Params.email }}"><span>{{ .Site.Params.email }}</span></a>
+    </div>
+  </div>
+  <div class="right">
+    <p id="my-education">Student of <span id="school">{{ .Site.Params.my_education }}</span></p>
+    <p id="my-major">Majors in <span>{{ .Site.Params.my_major }}</span></p>
+  </div>
+</div>
+<main class="content content--about" role="main">
+  <article class="article about-intro">
+    <div class="article-content">
+      {{ .Content }}
+    </div>
+  </article>
+</main>

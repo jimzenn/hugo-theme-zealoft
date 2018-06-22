@@ -1,0 +1,69 @@
+.bio {
+  -webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 0 calc(50% - 390px);
+  height: 200px;
+  background: #F3F3F3;
+  font-family: var(--text-font);
+}
+
+.bio p {
+  color: #909090;
+  margin-top: 0;
+}
+
+.bio p span {
+  color: #333;
+  font-weight: 500;
+}
+
+.bio .left {
+  height: 100%;
+  padding-top: 40px;
+  margin-left: 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin-right: 80px;
+}
+
+.bio .left #my-photo {
+  width: 160px;
+  height: 160px;
+}
+
+.bio .left #my-info #my-name {
+  display: block;
+  font-size: 25.6px;
+  font-weight: 600;
+}
+
+.bio .left #my-info #my-email {
+  display: block;
+  font-size: 19.2px;
+  color: #666;
+  text-decoration: none;
+  -webkit-transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.bio .left #my-info #my-email:hover {
+  opacity: .8;
+}
+
+.bio .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+  padding-top: 40px;
+}
+
+.content--about {
+  min-height: unset;
+  margin-bottom: 70px;
+}

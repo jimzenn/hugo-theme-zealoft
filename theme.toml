@@ -1,0 +1,17 @@
+name = "Zealoft"
+license = "MIT"
+licenselink = "https://github.com/Jim-Zenn/LICENSE.md"
+description = "Zealoft minimal theme"
+homepage = "https://github.com/Jim-Zenn/hugo-theme-zealoft"
+tags = ["blog", "minimal", "personal", "responsive"]
+features = ["blog", "taxonomies"]
+min_version = 0.25
+
+[author]
+  name = "Jim Zenn"
+  homepage = "https://zealoft.com"
+
+[original]
+  name = "Jonathan Rutheiser"
+  homepage = "http://jrutheiser.com/"
+  repo = "https://github.com/jrutheiser/hugo-lithium-theme"

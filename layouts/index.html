@@ -1,0 +1,17 @@
+{{ partial "header.html" . }}
+
+<main class="content" role="main">
+
+  <div class="article-list">
+    {{ range .Pages }}
+
+    {{ partial "list-item.html" . }}
+
+    {{ end }}
+  </div>
+
+{{ partial "pagination.html" . }}
+
+</main>
+
+{{ partial "footer.html" . }}

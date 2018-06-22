@@ -1,0 +1,26 @@
+{{ partial "header.html" . }}
+
+<main class="content" role="main">
+
+<div class="article-list">
+  <!--
+    TODO:
+    a better logic is required here
+    I want to check if the category exists;
+    if it exists, does it only have a placeholder post?
+    If so, show a message.
+  -->
+  {{ if eq (len .Paginator.Pages) 1 }}
+    <span class="message--category-empty">There is nothing here yet.</span>
+  {{ else }}
+    {{ range .Paginator.Pages }}
+    {{ partial "list-item.html" . }}
+    {{ end }}
+  {{ end }}
+</div>
+
+{{ partial "pagination.html" . }}
+
+</main>
+
+{{ partial "footer.html" . }}

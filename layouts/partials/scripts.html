@@ -1,0 +1,11 @@
+<script>
+var toggle = document.getElementById("menu-toggle");
+
+toggle.addEventListener("click", function() {
+  this.classList.toggle("nav__toggle--active");
+  var content = document.getElementById("collapsable-menu");
+  var header = document.getElementById("header");
+  content.classList.toggle("nav__menu--collapsable--active");
+  header.classList.toggle("header--active");
+});
+</script>
