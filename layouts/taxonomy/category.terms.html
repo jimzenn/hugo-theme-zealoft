@@ -3,7 +3,7 @@
 <main class="content">
 
   <div class="category">
-    <h1 class="category-title">{{ i18n "categories" }}</h2>
+    <h1 class="category-title">Volumes</h2>
     {{ $data := .Data }}
     {{ range $key, $value := .Data.Terms.Alphabetical }}
     <ul class="category-item">
@@ -13,7 +13,7 @@
           <sup>({{ $value.Count }})</sup>
        </span>
       </li>
-    </ul>   
+    </ul>
     {{ end }}
   </div>
 

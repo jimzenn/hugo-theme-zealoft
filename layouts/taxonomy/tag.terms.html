@@ -3,7 +3,7 @@
 <main class="content">
 
   <div class="tag-cloud">
-    <h1 class="tag-cloud-title">{{ i18n "tags" }}</h2>
+    <h1 class="tag-cloud-title">tags</h2>
     {{ if not (eq (len $.Site.Taxonomies.keywords) 0) }}
     {{ $fontUnit := "rem" }}
     {{ $largestFontSize := 2.5 }}
@@ -12,7 +12,7 @@
     {{ $max := add (len (index $.Site.Taxonomies.tags.ByCount 0).Pages) 1 }}
     {{ $min := len (index $.Site.Taxonomies.tags.ByCount.Reverse 0).Pages }}
     {{ $spread := sub $max $min }}
-    {{ $fontStep := div $fontSpread $spread }}    
+    {{ $fontStep := div $fontSpread $spread }}
     <ul class="tag-cloud-item">
         {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
             {{ $currentTagCount := len $taxonomy.Pages }}

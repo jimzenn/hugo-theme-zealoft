@@ -10,8 +10,8 @@
     if it exists, does it only have a placeholder post?
     If so, show a message.
   -->
-  {{ if eq (len .Paginator.Pages) 1 }}
-    <span class="message--category-empty">There is nothing here yet.</span>
+  {{ if eq .Title "Publications" }}
+    <span class="message--empty">There is nothing here yet.</span>
   {{ else }}
     {{ range .Paginator.Pages }}
     {{ partial "list-item.html" . }}

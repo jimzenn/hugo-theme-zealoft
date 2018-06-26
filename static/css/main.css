@@ -290,7 +290,7 @@ body.about .nav__link {
   opacity: 0.5;
 }
 
-.message--category-empty {
+.message--empty {
   display: block;
   font-family: var(--display-font);
   font-size: 32px;
@@ -442,4 +442,12 @@ body.about .nav__link {
   text-decoration: none;
   transition: color 300ms;
   margin-right: 20px;
+}
+
+code.has-jax {
+  font: inherit;
+  font-size: 100%;
+  background: inherit;
+  border: inherit;
+  color: #515151;
 }

@@ -3,8 +3,8 @@
     <h1 class="article__title article__title--list-item"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
     <p class="article__meta">
       <span>
-        <a href="/volumes/{{ lower (index .Params.volumes 0) }}" class="article__volume-link">Vol. {{ index .Params.volumes 0 }}</a>
-        <small>∙</small> 
+        <a href="/volumes/{{ (urlize (index .Params.volumes 0)) }}" class="article__volume-link">Vol. {{ index .Params.volumes 0 }}</a>
+        <small>∙</small>
         {{ .Date.Format "April 2006" }}
       </span>
       <span>
