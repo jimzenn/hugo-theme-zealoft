@@ -1,0 +1,10 @@
+<div class="block block--theorem">
+  {{ if (isset .Params 0) }}
+  <span class="block__title block__title--theorem">Theorem: {{index .Params 0}}</span>
+  {{ else }}
+  <span class="block__title block__title--theorem">Theorem</span>
+  {{ end }}
+  <div class="block__content block__content--theorem">
+  {{ .Inner }}
+  </div>
+</div>

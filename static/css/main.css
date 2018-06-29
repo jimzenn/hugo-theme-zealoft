@@ -1,29 +1,84 @@
+:root {
+  --display-font: "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --text-font: "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --serif-font: "Untitled Serif", serif;
+  --monospaced-font: "SF Mono", 'Pragmata Pro', 'source-code-pro', monospace;
+  --text-color: #333;
+  --link-color: #0070c9;
+
+  /* Bootstrap Colors */
+  --definition-text-color: #004085;
+  --definition-background-color: #CCE6FF;
+  --definition-border-color: #b8daff;
+  --properties-text-color: #0c5460;
+  --properties-background-color: #d1ecf1;
+  --properties-border-color: #bee5eb;
+  --theorem-text-color: #0c5460;
+  --theorem-background-color: #d1ecf1;
+  --theorem-border-color: #bee5eb;
+  --axioms-text-color: #0c5460;
+  --axioms-background-color: #d1ecf1;
+  --axioms-border-color: #bee5eb;
+  --examples-text-color: #312e37;
+  --examples-background-color: #f6f6f7;
+  --examples-border-color: #f1f0f3;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--text-font);
+  font-size: 17px;
+  line-height: 1.53;
+  letter-spacing: -.021em;
+  /* leave space for header */
+  padding-top: 48px;
+  color: var(--text-color);
+  font-synthesis: none;
+  font-feature-settings: 'kern';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mathjax {
+  outline: 0;
+}
+
 a {
-  color: #0070c9;
+  color: var(--link-color);
 }
 
 ul, ol, li,
 dl, dt, dd,
 h1, h2, h3, h4, h5, h6, hgroup,
 hr,
-p, blockquote,
-figure,
-form, fieldset, input, legend, pre, abbr, button {
+blockquote,
+figure {
   margin: 0;
   padding: 0;
 }
 
 p {
   margin-top: 12px;
+  padding: 0;
 }
 
 p+h1, ul+h1, ol+h1, table+h1,
 p+h2, ul+h2, ol+h2, table+h2,
-p+h3, ul+h3, ol+h3, table+h3,
-p+h4, ul+h4, ol+h4, table+h4,
-p+h5, ul+h5, ol+h5, table+h5,
-p+h6, ul+h6, ol+h6, table+h6 {
+p+h3, ul+h3, ol+h3, table+h3 {
   padding-top: 1.4em;
+}
+
+p+h4, ul+h4, ol+h4, table+h4 {
+  padding-top: .3em;
+}
+
+h4 {
+  font-weight: 500;
 }
 
 table {
@@ -33,19 +88,6 @@ table {
   margin-bottom: 1rem;
   border-spacing: 0;
   border-collapse: separate;
-}
-
-
-.article__content td,
-.article__content th {
-  padding-top: .6rem;
-  padding-bottom: .6rem;
-  padding-right: 1.6rem;
-  padding-left: .8rem;
-}
-
-.article__content th {
-  border-bottom: solid 1px #333 !important;
 }
 
 ul, ol {
@@ -70,34 +112,6 @@ hr {
   border: none;
   margin-top: 2rem;
   margin-bottom: 2rem;
-}
-
-/* ===== basics ===== */
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --display-font: "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --text-font: "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --monospaced-font: "SF Mono", 'Pragmata Pro', 'source-code-pro', monospace;
-  font-size: 17px;
-}
-
-body {
-  font-family: var(--text-font);
-  line-height: 1.53;
-  letter-spacing: -.021em;
-  /* leave space for header */
-  padding-top: 48px;
-  color: #333;
-  font-synthesis: none;
-  font-feature-settings: 'kern';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ===== header ===== */
@@ -269,8 +283,9 @@ body.about .nav__link {
 
 .content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   min-height: calc(100vh - 250px);
   margin-top: 90px;
   margin-left: auto;
@@ -450,4 +465,8 @@ code.has-jax {
   background: inherit;
   border: inherit;
   color: #515151;
+}
+
+.latex-macros {
+  display: none;
 }

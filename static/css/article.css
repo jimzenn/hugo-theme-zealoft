@@ -49,7 +49,7 @@
   padding: 0 2px;
 }
 
-.article hr {
+.article__seperator {
   border: 0;
   height: 1px;
   background: #d6d6d6;
@@ -66,6 +66,12 @@
   margin-bottom: 60px;
 }
 
+.article__content > hr {
+  height: 1px;
+  background: #eeeeee;
+  margin: 30px 0 !important;
+}
+
 .article__content h1,
 .article__content h2 {
   font-family: var(--display-font);
@@ -80,6 +86,7 @@
   color: #0070c9;
 }
 
+.article__content b,
 .article__content strong {
   font-weight: 500;
 }
@@ -90,16 +97,120 @@
 
 .article__content h1+*,
 .article__content h2+*,
-.article__content h3+*,
-.article__content h4+*,
-.article__content h5+*,
-.article__content h6+* {
+.article__content h3+* {
   padding-top: .75em;
 }
 
+.article__content h4+* {
+  padding-top: .5em;
+}
 
 .article__content p+*,
 .article__content ul+*,
 .article__content ol+* {
   margin-top: .7em;
+}
+
+.article__content td,
+.article__content th {
+  padding-top: .6rem;
+  padding-bottom: .6rem;
+  padding-right: 1.6rem;
+  padding-left: .8rem;
+}
+
+.article__content th {
+  border-bottom: solid 1px #333 !important;
+}
+
+
+
+.article__content .block {
+  margin-bottom: 1.5em;
+  border-radius: 3px;
+  padding: .75rem 1.25rem;
+}
+
+.article__content .block__title {
+  font-weight: 600;
+}
+
+.article__content .block__content > * {
+  margin-left: 1.25em;
+  margin-right: 1.25em;
+}
+
+.article__content .examples > ul,
+.article__content .examples > ol {
+  padding-left: 10px;
+}
+
+.article__content .examples > p {
+  padding-left: 25px;
+}
+
+.article__content .proof > ul,
+.article__content .proof > ol {
+  padding-left: 10px;
+}
+
+.article__content .proof {
+  margin-bottom: 1.5em;
+}
+
+.article__content .proof > p {
+  margin: 0;
+  padding-left: 25px;
+}
+
+.article__content .block--definition {
+  background-color: var(--definition-background-color);
+  border: 1px var(--definition-border-color) solid;
+}
+
+.article__content .block__title--definition {
+  color: var(--definition-text-color); 
+}
+
+.article__content .block--properties {
+  background-color: var(--properties-background-color);
+  border: 1px var(--properties-border-color) solid;
+}
+
+.article__content .block__title--properties {
+  color: var(--properties-text-color); 
+}
+
+.article__content .block--theorem {
+  background-color: var(--theorem-background-color);
+  border: 1px var(--theorem-border-color) solid;
+}
+
+.article__content .block__title--theorem {
+  color: var(--theorem-text-color); 
+}
+
+.article__content .block--axioms {
+  background-color: var(--axioms-background-color);
+  border: 1px var(--axioms-border-color) solid;
+}
+
+.article__content .block__title--axioms {
+  color: var(--axioms-text-color); 
+}
+
+.article__content .block--example {
+  background-color: var(--examples-background-color);
+  border: 1px var(--examples-border-color) solid;
+}
+
+.article__content .block__title--example {
+  color: var(--examples-text-color); 
+}
+
+.article__content .block__content--example > p:first-of-type {
+  margin-top: 0.2em;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1.6em;
 }

@@ -1,0 +1,10 @@
+<div class="block block--properties">
+  {{ if (isset .Params 0) }}
+  <span class="block__title block__title--properties">Properties: {{index .Params 0}}</span>
+  {{ else }}
+  <span class="block__title block__title--properties">Properties</span>
+  {{ end }}
+  <div class="block__content block__content--properties">
+  {{ .Inner }}
+  </div>
+</div>
