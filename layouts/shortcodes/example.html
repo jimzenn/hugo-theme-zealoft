@@ -1,9 +1,9 @@
 <div class="block block--example">
-  {{ if (isset .Params 0) }}
-  <span class="block__title block__title--example">Example: {{index .Params 0}}</span>
-  {{ else }}
-  <span class="block__title block__title--example">Example</span>
+  <span class="block__title block__title--example">Example
+  {{- with .Get "name" -}}
+  : {{.}}
   {{ end }}
+  </span>
   <div class="block__content block__content--example">
   {{ .Inner }}
   </div>

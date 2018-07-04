@@ -1,4 +1,3 @@
-{{ if not (isset .Params "hide") }}
   <article class="article article--list-item">
     <h1 class="article__title article__title--list-item"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
     {{ partial "article-meta.html" . }}
@@ -7,4 +6,3 @@
     </div>
     <p><a class="article__more" href="{{ .Permalink }}"> Read the article</a></p>
   </article>
-{{ end }}

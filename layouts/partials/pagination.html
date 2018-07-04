@@ -2,7 +2,7 @@
 {{ if gt $pag.TotalPages 1 }}
 
 <ul class="page-links">
-  <li 
+  <li
     {{ if not $pag.HasPrev }}class="page-links-disabled"{{ end }}>
     <a href="{{ if $pag.HasPrev }}{{ $pag.Prev.URL }}{{ end }}" aria-label="Previous"><span aria-hidden="true">&lt;&#160;</span></a>
   </li>
@@ -11,7 +11,7 @@
   {{ $right := sub .TotalPages .PageNumber }}
   {{ $showNumber := or (le .PageNumber 3) (eq $right 0) }}
   {{ $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2)))  }}
-  {{ if $showNumber }} 
+  {{ if $showNumber }}
     {{ $.Scratch.Set "__paginator.ellipsed" false }}
     {{ $.Scratch.Set "__paginator.shouldEllipse" false }}
   {{ else }}
@@ -22,7 +22,7 @@
     <li
       {{ if eq . $pag }}class="page-links-active"{{ end }}><a href="{{ .URL }}">{{ .PageNumber }}</a>
     </li>
-    {{ else if ($.Scratch.Get "__paginator.shouldEllipse") }}    
+    {{ else if ($.Scratch.Get "__paginator.shouldEllipse") }}
   <li class="page-links-disabled"><span aria-hidden="true">&hellip;</span></li>
   {{ end }}
   {{ end }}

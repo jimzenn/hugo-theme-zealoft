@@ -1,10 +1,10 @@
 <div class="block block--definition">
-  {{ if (isset .Params 0) }}
-  <span class="block__title block__title--definition">Definition: {{index .Params 0}}</span>
-  {{ else }}
-  <span class="block__title block__title--definition">Definition</span>
+  <span class="block__title block__title--definition">Definition
+  {{- with .Get "name" -}}
+  : {{.}}
   {{ end }}
+  </span>
   <div class="block__content block__content--definition">
-  {{ .Inner }}
+    {{ .Inner }}
   </div>
 </div>

@@ -1,0 +1,10 @@
+<div class="block block--note">
+  <span class="block__title block__title--note">Remarks
+  {{- with .Get "name" -}}
+  : {{.}}
+  {{ end }}
+  </span>
+  <div class="block__content block__content--note">
+  {{ .Inner }}
+  </div>
+</div>

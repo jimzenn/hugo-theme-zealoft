@@ -1,3 +1,7 @@
 <div class="examples">
-  <strong>Examples</strong> {{ .Inner }}
+  <strong>Examples
+  {{- with .Get "name" -}}
+  : {{.}}
+  {{ end }}
+  </strong> {{ .Inner }}
 </div>

@@ -22,6 +22,9 @@
   --examples-text-color: #312e37;
   --examples-background-color: #f6f6f7;
   --examples-border-color: #f1f0f3;
+  --note-text-color: #856404;
+  --note-background-color: #fff3cd;
+  --note-border-color: #ffeeba;
 }
 
 html,
@@ -245,7 +248,7 @@ hr {
 }
 
 .nav__menu--collapsable--active {
-  height: 136px;
+  height: 236px;
 }
 
 .nav__list--collapsable {
@@ -470,3 +473,4 @@ code.has-jax {
 .latex-macros {
   display: none;
 }
+

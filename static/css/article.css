@@ -95,6 +95,27 @@
   width: 100%;
 }
 
+.article__content h1+*:not(p),
+.article__content h2+*:not(p),
+.article__content h3+*:not(p) {
+  margin-top: 1.25em;
+}
+
+.article__content h4+*:not(p) {
+  margin-top: 1em;
+}
+
+.article__content h1+p,
+.article__content h2+p,
+.article__content h3+p {
+  padding-top: .75em;
+}
+
+.article__content h4+p {
+  padding-top: .5em;
+}
+
+
 .article__content h1+*,
 .article__content h2+*,
 .article__content h3+* {
@@ -126,6 +147,7 @@
 
 
 .article__content .block {
+  margin-top: .8em;
   margin-bottom: 1.5em;
   border-radius: 3px;
   padding: .75rem 1.25rem;
@@ -138,6 +160,11 @@
 .article__content .block__content > * {
   margin-left: 1.25em;
   margin-right: 1.25em;
+}
+
+.article__content .block__content > ul,
+.article__content .block__content > ol {
+  padding-left: 30px;
 }
 
 .article__content .examples > ul,
@@ -169,7 +196,7 @@
 }
 
 .article__content .block__title--definition {
-  color: var(--definition-text-color); 
+  color: var(--definition-text-color);
 }
 
 .article__content .block--properties {
@@ -178,7 +205,7 @@
 }
 
 .article__content .block__title--properties {
-  color: var(--properties-text-color); 
+  color: var(--properties-text-color);
 }
 
 .article__content .block--theorem {
@@ -187,7 +214,7 @@
 }
 
 .article__content .block__title--theorem {
-  color: var(--theorem-text-color); 
+  color: var(--theorem-text-color);
 }
 
 .article__content .block--axioms {
@@ -196,7 +223,16 @@
 }
 
 .article__content .block__title--axioms {
-  color: var(--axioms-text-color); 
+  color: var(--axioms-text-color);
+}
+
+.article__content .block--note {
+  background-color: var(--note-background-color);
+  border: 1px var(--note-border-color) solid;
+}
+
+.article__content .block__title--note {
+  color: var(--note-text-color);
 }
 
 .article__content .block--example {
@@ -205,7 +241,7 @@
 }
 
 .article__content .block__title--example {
-  color: var(--examples-text-color); 
+  color: var(--examples-text-color);
 }
 
 .article__content .block__content--example > p:first-of-type {
