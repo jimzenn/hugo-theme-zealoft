@@ -1,4 +1,13 @@
 <div class="proof">
-  <strong>Proof</strong>
-  {{ .Inner }}
+  <span class="proof__title">Proof
+    <span class="proof__method">
+      {{ with .Get "name" }}
+      {{.}}
+      {{ end }}
+    </span>
+  </span> 
+  <span class="proof__expand">[<a>expand</a>]</span>
+  <div class="proof__content">
+    {{ .Inner }}
+  </div>
 </div>

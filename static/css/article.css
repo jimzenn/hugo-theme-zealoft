@@ -153,6 +153,15 @@
   padding: .75rem 1.25rem;
 }
 
+.article__content .block strong {
+  font-weight: 600;
+}
+
+.article__content .block .block {
+  margin-left: -.25rem;
+  margin-right: -.25rem;
+}
+
 .article__content .block__title {
   font-weight: 600;
 }
@@ -176,13 +185,27 @@
   padding-left: 25px;
 }
 
+.article__content .proof {
+  margin-bottom: 1.5em;
+}
+
+.article__content .proof__title {
+  font-weight: 600;
+}
+
+.article__content .proof__expand {
+  cursor: pointer;
+  user-select: none;
+}
+
+.article__content .proof__content,
+.article__content .proof__method {
+  display: none;
+}
+
 .article__content .proof > ul,
 .article__content .proof > ol {
   padding-left: 10px;
-}
-
-.article__content .proof {
-  margin-bottom: 1.5em;
 }
 
 .article__content .proof > p {

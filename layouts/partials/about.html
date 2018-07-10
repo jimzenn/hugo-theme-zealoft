@@ -7,8 +7,11 @@
     </div>
   </div>
   <div class="right">
-    <p id="my-education">Student of <span id="school">{{ .Site.Params.my_education }}</span></p>
-    <p id="my-major">Majors in <span>{{ .Site.Params.my_major }}</span></p>
+    <div id="my-school">
+      <p id="my-education">Student of <span id="school">{{ .Site.Params.my_education }}</span></p>
+      <p id="my-major">Majors in <span>{{ .Site.Params.my_major }}</span></p>
+    </div>
+    <p id="my-CV"><a href="{{ .Site.Params.CV }}" class="link--download">Download my CV</a></p>
   </div>
 </div>
 <main class="content content--about" role="main">

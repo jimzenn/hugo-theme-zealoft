@@ -1,4 +1,10 @@
 @media (min-width: 1069px) {
+  .jumbotron {
+    height: 256px;
+    background-position: center center;
+    background-size: 100% auto;
+  }
+
   .nav {
     width: 980px;
   }
@@ -61,6 +67,12 @@
 
 
 @media (min-width: 736px) and (max-width: 1068px) {
+  .jumbotron {
+    height: 256px;
+    background-position: center center;
+    background-size: 100% auto;
+  }
+
   .nav {
     width: 100%;
   }
@@ -126,6 +138,16 @@
 }
 
 @media (max-width: 735px) {
+  .jumbotron {
+    height: 200px;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  #jumbotron__expand-button {
+    display: none;
+  }
+
   .nav {
     width: 100%;
   }
@@ -195,7 +217,15 @@
 
   .bio .right {
     position: absolute;
-    top: 200px;
+    top: 180px;
+  }
+
+  .bio .right #my-CV {
+    margin-top: 2px;
+  }
+
+  .content--about {
+    margin-top: 140px;
   }
 
   body .nav__toggle {

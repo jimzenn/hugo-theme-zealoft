@@ -13,15 +13,20 @@
   {{ else }}
   <body>
   {{ end }}
+    <div class="header-bg" id="header-bg"></div>
     <header class="header" id="header">
       <nav class="nav">
         <span class="nav__logo">
           <a  href="{{ .Site.BaseURL }}">
           {{ .Site.Title }}
           </a>
-          {{ if ne $.Title "Jim Zenn" }}
+          {{ if not .IsHome }}
             <b class="nav__section">
-              {{ $.Title }}
+              {{ if (isset .Params "menu_title") }}
+                {{ .Params.menu_title }}
+              {{ else }}
+                {{ $.Title }}
+              {{ end }}
             </b>
           {{ end }}
           </span>
@@ -42,3 +47,17 @@
         </ul>
       </div>
     </header>
+
+    <script>
+    var toggle = document.getElementById("menu-toggle");
+
+    toggle.addEventListener("click", function() {
+      this.classList.toggle("nav__toggle--active");
+      var content = document.getElementById("collapsable-menu");
+      var header = document.getElementById("header");
+      var headerBg = document.getElementById("header-bg");
+      content.classList.toggle("nav__menu--collapsable--active");
+      header.classList.toggle("header--active");
+      headerBg.classList.toggle("header-bg--active");
+    });
+    </script>

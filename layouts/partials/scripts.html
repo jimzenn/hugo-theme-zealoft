@@ -1,15 +1,3 @@
-<script>
-var toggle = document.getElementById("menu-toggle");
-
-toggle.addEventListener("click", function() {
-  this.classList.toggle("nav__toggle--active");
-  var content = document.getElementById("collapsable-menu");
-  var header = document.getElementById("header");
-  content.classList.toggle("nav__menu--collapsable--active");
-  header.classList.toggle("header--active");
-});
-</script>
-
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   MathJax.Hub.Config({
@@ -23,6 +11,7 @@ toggle.addEventListener("click", function() {
          extensions: ["AMSmath.js", "AMSsymbols.js"] }
   }
   });
+
   MathJax.Hub.Queue(function() {
     // Fix <code> tags after MathJax finishes running. This is a
     // hack to overcome a shortcoming of Markdown. Discussion at
@@ -38,3 +27,32 @@ toggle.addEventListener("click", function() {
   TeX: { equationNumbers: { autoNumber: "AMS" } }
   });
 </script>
+
+<script type="text/javascript">
+  var list = document.querySelectorAll('.proof__expand');
+  for (var i = 0; i < list.length; i++) {
+    list[i].addEventListener("click", function(e){
+      var proofContent = e.target.parentNode.nextSibling.nextSibling;
+      var proofMethod = e.target.parentNode.previousSibling.previousSibling.childNodes[1];
+      if (e.target.innerHTML == "expand") {
+        proofContent.style.display = "inline";
+        proofMethod.style.display = "inline";
+        e.target.innerHTML = "collapse";
+      } else {
+        proofContent.style.display = "none";
+        proofMethod.style.display = "none";
+        e.target.innerHTML = "expand";
+      }
+    });
+  }
+
+</script>
+
+{{ if in (.Site.BaseURL | string) "localhost" }}
+<script type="text/javascript">
+  var list = document.querySelectorAll('.proof__expand a');
+  for (var i = 0; i < list.length; i++) {
+    list[i].click();
+  }
+</script>
+{{ end }}
