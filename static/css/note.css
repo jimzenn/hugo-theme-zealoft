@@ -1,0 +1,127 @@
+.article__content .block {
+  margin-top: .8em;
+  margin-bottom: 1.5em;
+  border-radius: 3px;
+  padding: .75rem 1.25rem;
+}
+
+.article__content .block strong {
+  font-weight: 600;
+}
+
+.article__content .block .block {
+  margin-left: -.25rem;
+  margin-right: -.25rem;
+}
+
+.article__content .block__title {
+  font-weight: 600;
+}
+
+.article__content .block__content > * {
+  margin-left: 1.25em;
+  margin-right: 1.25em;
+}
+
+.article__content .block__content > ul,
+.article__content .block__content > ol {
+  padding-left: 30px;
+}
+
+.article__content .examples > ul,
+.article__content .examples > ol {
+  padding-left: 10px;
+}
+
+.article__content .examples > p {
+  padding-left: 25px;
+}
+
+.article__content .proof {
+  margin-bottom: 1.5em;
+}
+
+.article__content .proof__title {
+  font-weight: 600;
+}
+
+.article__content .proof__expand {
+  cursor: pointer;
+  user-select: none;
+}
+
+.article__content .proof__content,
+.article__content .proof__method {
+  display: none;
+}
+
+.article__content .proof > ul,
+.article__content .proof > ol {
+  padding-left: 10px;
+}
+
+.article__content .proof > p {
+  margin: 0;
+  padding-left: 25px;
+}
+
+.article__content .block--definition {
+  background-color: var(--blue-background-color);
+  border: 1px var(--blue-border-color) solid;
+}
+
+.article__content .block__title--definition {
+  color: var(--blue-text-color);
+}
+
+.article__content .block--properties {
+  background-color: var(--green-background-color);
+  border: 1px var(--green-border-color) solid;
+}
+
+.article__content .block__title--properties {
+  color: var(--green-text-color);
+}
+
+.article__content .block--theorem {
+  background-color: var(--green-background-color);
+  border: 1px var(--green-border-color) solid;
+}
+
+.article__content .block__title--theorem {
+  color: var(--green-text-color);
+}
+
+.article__content .block--axioms {
+  background-color: var(--green-background-color);
+  border: 1px var(--green-border-color) solid;
+}
+
+.article__content .block__title--axioms {
+  color: var(--green-text-color);
+}
+
+.article__content .block--note {
+  background-color: var(--yellow-background-color);
+  border: 1px var(--yellow-border-color) solid;
+}
+
+.article__content .block__title--note {
+  color: var(--yellow-text-color);
+}
+
+.article__content .block--example {
+  background-color: var(--gray-background-color);
+  border: 1px var(--gray-border-color) solid;
+}
+
+.article__content .block__title--example {
+  color: var(--gray-text-color);
+}
+
+.article__content .block__content--example > p:first-of-type {
+  margin-top: 0.2em;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1.6em;
+}

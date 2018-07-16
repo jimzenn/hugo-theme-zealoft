@@ -1,1 +1,26 @@
-/* Zealoft doesn't support list.html. */
+{{- define "type" -}} list {{- end -}}
+
+{{ define "head" }}
+    {{ partial "head.html" . }}
+{{ end }}
+
+{{ define "body" }}
+
+  {{ partial "header.html" . }}
+
+  <main class="content" role="main">
+    <div class="article-list">
+      {{ range where .Site.Pages "Section" .Section }}
+        {{ if (not (isset .Params "hide")) }}
+        {{ partial "list-item.html" . }}
+        {{ end }}
+      {{ end }}
+    </div>
+
+  <!-- {{ partial "pagination.html" . }} -->
+
+  </main>
+
+  {{ partial "footer.html" . }}
+
+{{ end }}

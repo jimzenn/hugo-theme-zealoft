@@ -1,9 +1,16 @@
-{{ partial "header" . }}
+{{- define "type" -}} 404 {{- end -}}
 
-  <main class="content">
-      <span class="message--empty">404 Page not found.</span>
-  </main>
+{{ define "head" }}
+    {{ partial "head.html" . }}
+{{ end }}
 
-{{ partial "footer" . }}
+{{ define "body" }}
+  {{ partial "header" . }}
 
+    <main class="content">
+        <span class="message--empty">404 Page not found.</span>
+    </main>
 
+  {{ partial "footer" . }}
+
+{{ end }}

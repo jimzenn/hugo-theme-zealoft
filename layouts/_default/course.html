@@ -1,0 +1,84 @@
+{{- define "type" -}} course wide {{- end -}}
+
+{{ define "head" }}
+    {{ partial "head.html" . }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/course.css?v=1.5" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v=1.5" media="all">
+{{ end }}
+
+{{ define "body" }}
+
+  {{ partial "header.html" . }}
+
+  {{ partial "navigation.html" . }}
+
+
+  <main class="content" role="main">
+    {{ $volume := .Param "course_number" }}
+    {{ range where $.Site.Data.courses "course-number" (.Param "course_number") }}
+    <div class="course-introduction">
+      <div class="course-illustration">
+      </div>
+      <div class="course-information">
+        <span class="course-number">{{ index . "course-number" }}</span>
+        <h1 class="course-title">{{ index . "course-title" }}</h1>
+        <p class="course-introduction"> {{ index . "course-introduction" }}
+        </p>
+        <div class="course-info">
+          {{ range ( index . "course-info" ) }}
+          <div class="course-info__group">
+            <span class="course-info__field">{{ index . "field" }}</span>
+            <a class="course-info__value {{ with index . "icon" }} link--{{- . -}} {{ end }}" {{ with index . "url" }} href="{{ . }}" {{ else }} disabled="true" {{ end }}>{{ index . "value" }}</a>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    <div class="course-syllabus page-link-position-fixer" id="syllabus">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th class="mobile-hide">Date</th>
+            <th align="left">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range where $.Site.Pages.Reverse "Section" "notes" }}
+            {{ $is_section := eq .Kind "section" }}
+            {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
+            {{ if (not (or $is_hide $is_section)) }}
+              {{ if eq (index .Params.volumes 0) $volume }}
+              <tr>
+                <td align="center">{{ .Param "Issue" }}</td>
+                <td align="center" class="date mobile-hide" style="font-weight: 500"><sup>{{ .PublishDate.Format "1" }}</sup><span class="slash">/</span><sub>{{ .PublishDate.Format "2" }}</sub></td>
+                <td class="wrap"><b>{{ .Title }}</b><br>{{ (strings.TrimSuffix "<p></p>" .Summary) | safeHTML }}[<a href="{{ .Permalink }}">Note</a>]</td>
+              </tr>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <div class="course-resources page-link-position-fixer" id="resources">
+      <h2 class="course-resources__title">Resources</h2>
+      <ul class="course-resources__list">
+        {{ range $index, $element := (index . "resources") }}
+        <li class="course-resources__item">
+          <span class="course-resources__numbering">[{{ add $index 1 }}]</span>
+          {{ with (index . "author") }} {{- . -}}. {{- end -}}
+          <b>{{- with (index . "title") -}} {{- . -}}. {{- end -}}</b>
+          <i>{{- with (index . "source") -}} {{- . -}}. {{- end -}}</i>
+          URL: <a href="{{ index . "url" }}" class="course-resources__link" target="_blank">
+            {{ index . "url" }}
+          </a>
+        </li>
+        {{ end }}
+      </ol>
+    </div>
+    {{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+
+{{ end }}

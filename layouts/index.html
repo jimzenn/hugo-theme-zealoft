@@ -1,65 +1,37 @@
-{{ partial "header.html" . }}
+{{- define "type" -}} home header-fixed {{- end -}}
 
-<div class="jumbotron" id="jumbotron">
-  <div class="jumbotron__text" id="jumbotron__text">
-    <span class="jumbotron__title" id="jumbotron__title"></span>
-    <span class="jumbotron__copyright" id="jumbotron__copyright"></span>
-  </div>
-  <button id="jumbotron__expand-button" onclick="expand_jumbotron()">
-    <svg id="jumbotron__expand-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-      width="306px" height="306px" viewBox="0 0 306 306" style="enable-background:new 0 0 306 306;" xml:space="preserve">
-      <g id="expand-more">
-        <polygon points="270.3,58.65 153,175.95 35.7,58.65 0,94.35 153,247.35 306,94.35 		"/>
-      </g>
-    </svg>
-  </button>
-</div>
-<script type="text/javascript">
-  featuredPhotos = [
-    {{ range $.Site.Data.featured_photos }}
-      {{- . -}},
-    {{ end }}
-  ]
-  numPhotos = featuredPhotos.length;
-  idx = Math.floor(Math.random() * numPhotos);
-  photoData = featuredPhotos[idx];
-  document.getElementById("jumbotron").style.backgroundImage = 'url(' + photoData['url'] + ')';
-  document.getElementById("jumbotron__title").innerHTML = photoData['title'];
-  document.getElementById("jumbotron__copyright").innerHTML = `Photo by <b>${photoData['author']}</b> with ${photoData['device']}. All rights reserved`;
-</script>
+{{ define "head" }}
+    {{ partial "head.html" . }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/jumbotron.css?v=1.5" media="all">
+{{ end }}
 
-<script type="text/javascript">
-jumbotronExpanded = false;
-jumbotronOriginalHeight = document.getElementById("jumbotron").scrollHeight;
-jumbotronImage = new Image();
-jumbotronImage.src = photoData['url'];
-expand_jumbotron = function() {
-  jumbotronImageRatio = jumbotronImage.height / jumbotronImage.width;
-  jumbotronImageExpandedHeight = Math.min(500, jumbotronImageRatio * document.documentElement.clientWidth);
-  if (!jumbotronExpanded) {
-    document.getElementById("jumbotron__text").style.bottom = `10px`;
-    document.getElementById("jumbotron__expand-svg").style.transform = 'rotate(180deg)';
-    document.getElementById("jumbotron").style.height = jumbotronImageExpandedHeight + `px`;
-  } else {
-    document.getElementById("jumbotron__text").style.bottom = `4px`;
-    document.getElementById("jumbotron").style.height = jumbotronOriginalHeight + 'px';
-    document.getElementById("jumbotron__expand-svg").style.transform = 'rotate(0)';
-  }
-  jumbotronExpanded = !jumbotronExpanded;
-}
-</script>
+{{ define "body" }}
 
-<main class="content" role="main">
-  <div class="article-list">
-    {{ range .Pages }}
-      {{ if (not (isset .Params "hide")) }}
-      {{ partial "list-item.html" . }}
+  {{ partial "header.html" . }}
+
+  {{ partial "jumbotron.html" . }}
+
+  <main class="content" role="main">
+    <div class="article-list">
+      {{ range where .Site.Pages "Section" "posts" }}
+        {{ $is_section := eq .Kind "section" }}
+        {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
+        {{ if (not (or $is_hide $is_section)) }}
+          {{ partial "list-item.html" . }}
+        {{ end }}
       {{ end }}
-    {{ end }}
-  </div>
+    </div>
 
-<!-- {{ partial "pagination.html" . }} -->
+  <!-- {{ partial "pagination.html" . }} -->
 
-</main>
+  </main>
 
-{{ partial "footer.html" . }}
+  {{ partial "footer.html" . }}
+
+  {{ partial "scripts.html" . }}
+
+{{ end }}
+
+
+
+

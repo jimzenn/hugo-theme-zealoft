@@ -1,7 +1,8 @@
-{{- define "type" -}} single {{- end -}}
+{{- define "type" -}} note {{- end -}}
 
 {{ define "head" }}
     {{ partial "head.html" . }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/note.css?v=1.5" media="all">
 {{ end }}
 
 {{ define "body" }}
@@ -34,6 +35,8 @@
     {{ end }}
   </div>
   {{ end }}
+
+  {{ partial "scripts.html" . }}
 
   {{ partial "footer.html" . }}
 

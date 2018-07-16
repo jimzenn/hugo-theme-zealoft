@@ -1,27 +1,36 @@
-{{ partial "header.html" . }}
+{{- define "type" -}} category {{- end -}}
 
-<main class="content" role="main">
+{{ define "head" }}
+    {{ partial "head.html" . }}
+{{ end }}
 
-<div class="article-list">
-  {{ if eq .Title "Publications" }}
-    <span class="message--empty">There is nothing here yet.</span>
-  {{ else }}
-    {{ range .Paginator.Pages }}
-      {{ if (isset .Params "top") }}
-        {{ partial "list-item.html" . }}
+{{ define "body" }}
+
+  {{ partial "header.html" . }}
+
+  <main class="content" role="main">
+
+    <div class="article-list">
+      {{ if eq .Title "Publications" }}
+        <span class="message--empty">There is nothing here yet.</span>
+      {{ else }}
+        {{ range .Paginator.Pages }}
+          {{ if (isset .Params "top") }}
+            {{ partial "list-item.html" . }}
+          {{ end }}
+        {{ end }}
+        <hr />
+        {{ range .Paginator.Pages }}
+          {{ if (not (isset .Params "top")) }}
+            {{ partial "list-item.html" . }}
+          {{ end }}
+        {{ end }}
       {{ end }}
-    {{ end }}
-    <hr />
-    {{ range .Paginator.Pages }}
-      {{ if (not (isset .Params "top")) }}
-        {{ partial "list-item.html" . }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-</div>
+    </div>
 
-{{ partial "pagination.html" . }}
+    {{ partial "pagination.html" . }}
 
-</main>
+  </main>
 
-{{ partial "footer.html" . }}
+  {{ partial "footer.html" . }}
+{{ end }}

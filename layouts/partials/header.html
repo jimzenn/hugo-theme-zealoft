@@ -1,63 +1,48 @@
-<!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
-  <head>
-    {{ partial "head.html" . }}
-  </head>
-
-  {{ if .IsHome }}
-  <body class="home">
-  {{ else if (isset .Params "about")}}
-  <body class="about">
-  {{ else if (eq .Kind "taxonomy")}}
-  <body class="taxonomy">
-  {{ else }}
-  <body>
-  {{ end }}
-    <div class="header-bg" id="header-bg"></div>
-    <header class="header" id="header">
-      <nav class="nav">
-        <span class="nav__logo">
-          <a  href="{{ .Site.BaseURL }}">
-          {{ .Site.Title }}
-          </a>
-          {{ if not .IsHome }}
-            <b class="nav__section">
-              {{ if (isset .Params "menu_title") }}
-                {{ .Params.menu_title }}
-              {{ else }}
-                {{ $.Title }}
-              {{ end }}
-            </b>
+<div class="header-bg" id="header-bg"></div>
+<header class="header" id="header">
+  <div class="header__title">
+    <span class="header__site-title">
+      <a  href="{{ .Site.BaseURL }}">
+      {{ .Site.Title }}
+      </a>
+      {{ if not .IsHome }}
+        <b class="header__section-title">
+          {{ if (isset .Params "menu_title") }}
+            {{ .Params.menu_title }}
+          {{ else }}
+            {{ $.Title }}
           {{ end }}
-          </span>
-        <div class="nav__menu">
-          <button class="nav__toggle" id="menu-toggle"></button>
-          <ul class="nav__list">
-            {{ range .Site.Menus.main }}
-            <li class="nav__item"><a class="nav__link" href="{{ .URL }}">{{ .Name }}</a></li>
-            {{ end }}
-          </ul>
-        </div>
-      </nav>
-      <div class="nav__menu--collapsable" id="collapsable-menu">
-        <ul class="nav__list--collapsable">
-          {{ range .Site.Menus.main }}
-          <li class="nav__item"><a class="nav__link" href="{{ .URL }}">{{ .Name }}</a></li>
-          {{ end }}
-        </ul>
-      </div>
-    </header>
+        </b>
+      {{ end }}
+    </span>
+  </div>
+  <button class="global-nav__toggle" id="global-nav-toggle"></button>
+  <nav class="global-nav" id="global-nav">
+      <ul class="global-nav__list">
+        {{ range .Site.Menus.main }}
+        <li class="global-nav__item"><a class="global-nav__link" href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+  </nav>
+  <nav class="global-nav--collapsable" id="collapsable-menu">
+    <ul class="global-nav__list--collapsable">
+      {{ range .Site.Menus.main }}
+      <li class="global-nav__item"><a class="global-nav__link" href="{{ .URL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+</header>
 
-    <script>
-    var toggle = document.getElementById("menu-toggle");
-
-    toggle.addEventListener("click", function() {
-      this.classList.toggle("nav__toggle--active");
-      var content = document.getElementById("collapsable-menu");
-      var header = document.getElementById("header");
-      var headerBg = document.getElementById("header-bg");
-      content.classList.toggle("nav__menu--collapsable--active");
-      header.classList.toggle("header--active");
-      headerBg.classList.toggle("header-bg--active");
-    });
-    </script>
+<script>
+var toggle = document.getElementById("global-nav-toggle");
+toggle.addEventListener("click", function() {
+  var content = document.getElementById("collapsable-menu");
+  var globalNav = document.getElementById("global-nav");
+  var header = document.getElementById("header");
+  var headerBg = document.getElementById("header-bg");
+  this.classList.toggle("global-nav__toggle--active");
+  content.classList.toggle("global-nav--collapsable--active");
+  header.classList.toggle("header--active");
+  headerBg.classList.toggle("header-bg--active");
+});
+</script>

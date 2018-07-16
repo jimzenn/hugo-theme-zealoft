@@ -1,0 +1,14 @@
+<div class="navigation">
+  <nav class="local-nav" id="local-nav">
+    {{ range where $.Site.Data.courses "course-number" ($.Param "course_number") }}
+    <span class="local-nav__title">{{ index . "course-title" }}</span>
+        <ul class="local-nav__list">
+        {{ range ( index . "navigation" ) }}
+          <li class="local-nav__item">
+            <a class="local-nav__link" href="{{ index . "url" }}">{{ index . "name" }}</a>
+          </li>
+        {{ end }}
+        </ul>
+    {{ end }}
+  </nav>
+</div>

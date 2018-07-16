@@ -198,6 +198,7 @@
     font-weight: 700;
     font-style: normal;
 }
+*/
 
 @font-face {
     font-family: 'SF Pro Text';
@@ -208,6 +209,7 @@
     font-style: normal;
 }
 
+/*
 @font-face {
     font-family: 'SF Pro Display';
     src: local('SF Pro Display BoldItalic'), local('SFProDisplay-BoldItalic'),

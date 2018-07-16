@@ -3,8 +3,8 @@
   {{with .Get "index"}}
   {{.}}
   {{- end -}}
-  {{- with .Get "name" -}}
-  : {{.}}
+  {{ with .Get "name" }}
+  {{.}}
   {{ end }}
   </span>
   <div class="block__content block__content--theorem">
