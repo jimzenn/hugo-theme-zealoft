@@ -1,9 +1,8 @@
 {{- define "type" -}} course wide {{- end -}}
 
-{{ define "head" }}
-    {{ partial "head.html" . }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/course.css?v=1.5" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v=1.5" media="all">
+{{ define "links" }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/course.css?v=2.1" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v=2.1" media="all">
 {{ end }}
 
 {{ define "body" }}
@@ -11,13 +10,12 @@
   {{ partial "header.html" . }}
 
   {{ partial "navigation.html" . }}
-
-
   <main class="content" role="main">
-    {{ $volume := .Param "course_number" }}
-    {{ range where $.Site.Data.courses "course-number" (.Param "course_number") }}
+    {{ $courseNumber := .Param "courseNumber" }}
+    {{ range where $.Site.Data.courses "course-number" (.Param "courseNumber") }}
     <div class="course-introduction">
       <div class="course-illustration">
+        <span class="coming-soon">coming soon</span>
       </div>
       <div class="course-information">
         <span class="course-number">{{ index . "course-number" }}</span>
@@ -44,16 +42,18 @@
           </tr>
         </thead>
         <tbody>
-          {{ range where $.Site.Pages.Reverse "Section" "notes" }}
+          {{ range where $.Site.Pages.Reverse "Section" ((index . "course-number") | upper | urlize) }}
             {{ $is_section := eq .Kind "section" }}
             {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
             {{ if (not (or $is_hide $is_section)) }}
-              {{ if eq (index .Params.volumes 0) $volume }}
-              <tr>
-                <td align="center">{{ .Param "Issue" }}</td>
-                <td align="center" class="date mobile-hide" style="font-weight: 500"><sup>{{ .PublishDate.Format "1" }}</sup><span class="slash">/</span><sub>{{ .PublishDate.Format "2" }}</sub></td>
-                <td class="wrap"><b>{{ .Title }}</b><br>{{ (strings.TrimSuffix "<p></p>" .Summary) | safeHTML }}[<a href="{{ .Permalink }}">Note</a>]</td>
-              </tr>
+              {{ if (isset .Params "volumes") }}
+                {{ if eq (index .Params.volumes 0) $courseNumber }}
+                <tr>
+                  <td align="center">{{ .Param "Issue" }}</td>
+                  <td align="center" class="date mobile-hide" style="font-weight: 500"><sup>{{ .PublishDate.Format "1" }}</sup><span class="slash">/</span><sub>{{ .PublishDate.Format "2" }}</sub></td>
+                  <td class="wrap"><b>{{ .Title }}</b><br>{{ (strings.TrimSuffix "<p></p>" .Summary) | safeHTML }}[<a href="{{ .Permalink }}">Note</a>]</td>
+                </tr>
+                {{ end }}
               {{ end }}
             {{ end }}
           {{ end }}
@@ -66,9 +66,9 @@
         {{ range $index, $element := (index . "resources") }}
         <li class="course-resources__item">
           <span class="course-resources__numbering">[{{ add $index 1 }}]</span>
-          {{ with (index . "author") }} {{- . -}}. {{- end -}}
-          <b>{{- with (index . "title") -}} {{- . -}}. {{- end -}}</b>
-          <i>{{- with (index . "source") -}} {{- . -}}. {{- end -}}</i>
+          {{- with (index . "author") -}} {{- . -}}. {{ end }}
+          <b>{{- with (index . "title") -}} {{- . -}}. {{ end }}</b>
+          <i>{{- with (index . "source") -}} {{- . -}}. {{ end }}</i>
           URL: <a href="{{ index . "url" }}" class="course-resources__link" target="_blank">
             {{ index . "url" }}
           </a>

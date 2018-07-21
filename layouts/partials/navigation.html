@@ -1,6 +1,6 @@
 <div class="navigation">
   <nav class="local-nav" id="local-nav">
-    {{ range where $.Site.Data.courses "course-number" ($.Param "course_number") }}
+    {{ range where $.Site.Data.courses "course-number" ($.Param "courseNumber") }}
     <span class="local-nav__title">{{ index . "course-title" }}</span>
         <ul class="local-nav__list">
         {{ range ( index . "navigation" ) }}

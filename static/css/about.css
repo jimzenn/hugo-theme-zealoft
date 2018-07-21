@@ -1,5 +1,4 @@
 .bio {
-  -webkit-user-select: none;
   user-select: none;
   display: flex;
   flex-direction: row;
@@ -22,13 +21,17 @@
 }
 
 .bio .left {
+  background: #F3F3F3;
   height: 100%;
   padding-top: 40px;
   margin-left: 30px;
   box-sizing: border-box;
+  margin-right: 80px;
+}
+
+.bio .left-wrapper {
   display: flex;
   align-items: center;
-  margin-right: 80px;
 }
 
 .bio .left #my-photo {

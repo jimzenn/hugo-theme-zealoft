@@ -33,10 +33,15 @@
 
 body.header-fixed .header {
   position: fixed;
+  height: 48px;
 }
 
 .header--active {
   background-color: rgba(0, 0, 0, 0.9);
+}
+
+.header__title {
+  height: 100%;
 }
 
 .header__title {
@@ -56,6 +61,18 @@ body.header-fixed .header {
   text-decoration: none;
   letter-spacing: -.025em;
   text-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.header__site-logo {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  height: 22px;
+  padding-bottom: 5px;
+}
+
+.header__site-title {
+  display: inline-block;
 }
 
 .header__section-title:before {

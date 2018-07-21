@@ -1,8 +1,7 @@
 {{- define "type" -}} note {{- end -}}
 
-{{ define "head" }}
-    {{ partial "head.html" . }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/note.css?v=1.5" media="all">
+{{ define "links" }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/note.css?v=2.1" media="all">
 {{ end }}
 
 {{ define "body" }}
@@ -22,7 +21,6 @@
         {{ .Content }}
       </div>
     </article>
-
   </main>
 
   {{ if eq .Kind "page" }}

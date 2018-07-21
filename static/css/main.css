@@ -221,6 +221,8 @@ hr {
   font-weight: 500;
   color:  var(--text-color);
   text-decoration: none;
+  white-space: nowrap;
+  text-overflow:ellipsis;
 }
 
 .pagination__prev:before,

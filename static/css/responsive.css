@@ -11,8 +11,7 @@
   }
 
   .content,
-  .pagination,
-  .bio .right {
+  .pagination {
     padding: 0 calc( 50vw - 326.666666px );
   }
 
@@ -79,8 +78,7 @@
   }
 
   .content,
-  .pagination,
-  .bio .right {
+  .pagination {
     padding: 0 calc( 50vw - 307.25px );
   }
 
@@ -153,8 +151,7 @@
   }
 
   .content,
-  .pagination,
-  .bio .right {
+  .pagination {
     padding: 0 6.25vw;
   }
 
@@ -203,17 +200,16 @@
     height: unset;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 110px;
+    background: transparent;
   }
 
   .bio .left {
-    height: 200px;
     margin: 0;
+    width: 100vw;
   }
 
-  .bio .right {
-    position: absolute;
-    top: 180px;
+  .bio .left-wrapper {
+    justify-content: center;
   }
 
   .bio .right #my-CV {
@@ -221,7 +217,7 @@
   }
 
   .content--about {
-    margin-top: 140px;
+    margin-top: 35px;
   }
 
   body .global-nav__toggle {

@@ -1,8 +1,7 @@
 {{- define "type" -}} about {{- end -}}
 
-{{ define "head" }}
-    {{ partial "head.html" . }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/about.css?v=1.5" media="all">
+{{ define "links" }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/about.css?v=2.1" media="all">
 {{ end }}
 
 {{ define "body" }}
@@ -11,10 +10,12 @@
 
   <div class="bio">
     <div class="left">
-      <img id="my-photo" src="/images/photo.png" alt="Jim Zenn">
-      <div id="my-info">
-        <span id="my-name">{{ .Site.Params.my_name }}</span>
-        <a id="my-email" href="mailto:{{ .Site.Params.email }}"><span>{{ .Site.Params.email }}</span></a>
+      <div class="left-wrapper">
+        <img id="my-photo" src="/images/photo.png" alt="Jim Zenn">
+        <div id="my-info">
+          <span id="my-name">{{ .Site.Params.my_name }}</span>
+          <a id="my-email" href="mailto:{{ .Site.Params.email }}"><span>{{ .Site.Params.email }}</span></a>
+        </div>
       </div>
     </div>
     <div class="right">
