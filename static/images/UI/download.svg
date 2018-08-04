@@ -1,1 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="100%" height="100%" viewBox="0 0 427 427" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M312.699,177.262l-99.211,107.098l-99.47,-107.247l-26.282,24.376l100.46,108.313c13.842,14.924 36.809,14.872 50.686,-0.108l100.113,-108.072l-26.296,-24.36Z" style="fill:#0070c9;fill-rule:nonzero;"/><rect x="195.411" y="34.107" width="35.846" height="250.917" style="fill:#0070c9;"/><rect x="52.029" y="356.715" width="322.608" height="35.846" style="fill:#0070c9;"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-download</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icon-download" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="download" fill-rule="nonzero">
+            <rect id="shape" x="0" y="0" width="24" height="24"></rect>
+            <path d="M11.5555907,15.19113 L11.5555907,3 L13.4445147,3 L13.4445147,15.2074413 L17.7361442,10.5628406 L19.1218259,11.8497729 L13.8463181,17.5591879 C13.1150622,18.3505774 11.904804,18.3533245 11.1753924,17.5648935 L5.88159934,11.8427466 L7.2665433,10.554969 L11.5555907,15.19113 Z M4,20.0432949 L21,20.0432949 L21,21.9370295 L4,21.9370295 L4,20.0432949 Z" fill="#0070C9"></path>
+        </g>
+    </g>
+</svg>

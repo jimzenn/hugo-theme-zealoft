@@ -1,14 +1,43 @@
-<div class="navigation">
-  <nav class="local-nav" id="local-nav">
-    {{ range where $.Site.Data.courses "course-number" ($.Param "courseNumber") }}
-    <span class="local-nav__title">{{ index . "course-title" }}</span>
-        <ul class="local-nav__list">
-        {{ range ( index . "navigation" ) }}
-          <li class="local-nav__item">
-            <a class="local-nav__link" href="{{ index . "url" }}">{{ index . "name" }}</a>
+<div class="navigation" id="navigation">
+  <div class="navigation__wrapper" id="navigation">
+    <div class="navigation__left">
+      <span class="navigation__sup-title" {{ with ( index . "emphColor" ) }}style="color: {{ . }}"{{ end }}>{{ index . "supTitle" }}</span>
+      <span class="navigation__title">{{ index . "title" | title }}</span>
+
+    </div>
+    <div class="navigation__right">
+      <ul class="navigation__list">
+      {{ range ( index . "navigation" ) }}
+        {{ if not (index . "sep") }}
+          <li class="navigation__item">
+            <a class="navigation__link {{ with ( index . "icon" ) }}link--{{ . }}{{ end }}" href="{{ index . "url" }}" {{ if (index . "new-tab") }}target="_blank"{{ end }}>{{ index . "name" }}</a>
           </li>
+        {{ else }}
+          <li class="navigation__item navigation__item--sep"> | </li>
         {{ end }}
-        </ul>
-    {{ end }}
-  </nav>
+      {{ end }}
+      </ul>
+    </div>
+  </div>
 </div>
+
+<script>
+  wasStuck = false;
+  window.addEventListener('scroll', function(e) {
+    var nav = document.querySelector("#navigation");
+    var navWrapper = document.querySelector("#navigation .navigation__wrapper");
+    var navOffsetTop = nav.getBoundingClientRect().top;
+    if (navOffsetTop == 0) {
+      // stuck
+      if (!wasStuck) {
+        navWrapper.classList.add("navigation__wrapper--stuck");
+        wasStuck = true;
+      }
+    } else {
+      if (wasStuck) {
+        navWrapper.classList.remove("navigation__wrapper--stuck");
+        wasStuck = false;
+      }
+    }
+  });
+</script>

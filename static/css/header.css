@@ -80,19 +80,19 @@ body.header-fixed .header {
   font-weight: 500;
 }
 
-.global-nav {
+.header-menu {
   display: flex;
   flex-direction: row;
 }
 
-.global-nav__list {
+.header-menu__list {
   display: flex;
   flex-direction: row;
   list-style: none;
   margin: 0;
 }
 
-.global-nav__toggle {
+.header-menu__toggle {
   color: white;
   font-size: 20px;
   font-weight: 800;
@@ -107,24 +107,24 @@ body.header-fixed .header {
   cursor: pointer;
 }
 
-.global-nav__toggle--active {
+.header-menu__toggle--active {
   padding: 20px 15px;
 }
 
-.global-nav__toggle:after {
+.header-menu__toggle:after {
   content: "...";
 }
 
-.global-nav__toggle--active:after {
+.header-menu__toggle--active:after {
   content: "✕";
 }
 
-.global-nav__item {
+.header-menu__item {
   margin-left: 1rem;
   list-style: none;
 }
 
-.global-nav__link {
+.header-menu__link {
   display: block;
   color: white;
   padding: 0 .5rem;
@@ -136,13 +136,13 @@ body.header-fixed .header {
   white-space: nowrap;
 }
 
-.global-nav__link:hover {
+.header-menu__link:hover {
   opacity: .65;
 }
 
-.global-nav--collapsable {
+.header-menu--collapsable {
   box-sizing: border-box;
-  position: fixed;
+  position: absolute;
   top: 48px;
   left: 0;
   height: 0px;
@@ -151,24 +151,24 @@ body.header-fixed .header {
   transition: background 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), height 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.global-nav--collapsable--active {
+.header-menu--collapsable--active {
   display: flex;
-  height: 236px;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.global-nav__list--collapsable {
+.header-menu__list--collapsable {
   width: 100vw;
   box-sizing: border-box;
   padding: 20px 32px;
   margin: 0;
 }
 
-.global-nav--collapsable .global-nav__item {
+.header-menu--collapsable .header-menu__item {
   margin: 0;
 }
 
-.global-nav--collapsable .global-nav__link {
+.header-menu--collapsable .header-menu__link {
   font-size: 17px;
   border-bottom: rgba(255, 255, 255, 0.15) 1px solid;
 }
@@ -180,7 +180,7 @@ body.about .header {
 }
 
 body.about .header *,
-body.about .global-nav__link {
+body.about .header-menu__link {
   color: inherit;
   text-shadow: none;
 }
@@ -189,11 +189,11 @@ body.header-fixed .header-bg {
   display: block;
 }
 
-body.about .global-nav__link {
+body.about .header-menu__link {
   border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
 }
 
-body.about .global-nav--collapsable {
+body.about .header-menu--collapsable {
   background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 1px 2px rgba(0,0,0,0.05),  0 3px 3px rgba(0,0,0,0.025);
 }

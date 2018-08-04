@@ -1,35 +1,31 @@
 {{- define "type" -}} course wide {{- end -}}
 
 {{ define "links" }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/course.css?v=2.1" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v=2.1" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/course.css?v=2.4" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v=2.4" media="all">
 {{ end }}
 
 {{ define "body" }}
 
   {{ partial "header.html" . }}
 
-  {{ partial "navigation.html" . }}
+  {{ $courseData := index (where $.Site.Data.courses "course-number" ($.Param "courseNumber") ) 0 }}
+  {{ partial "navigation.html" (dict "supTitle" (index $courseData "course-number") "title" (index $courseData "course-title") "navigation" (index $courseData "navigation") "emphColor" (index $courseData "course-color")) }}
+
   <main class="content" role="main">
     {{ $courseNumber := .Param "courseNumber" }}
     {{ range where $.Site.Data.courses "course-number" (.Param "courseNumber") }}
     <div class="course-introduction">
-      <div class="course-illustration">
-        <span class="coming-soon">coming soon</span>
-      </div>
       <div class="course-information">
-        <span class="course-number">{{ index . "course-number" }}</span>
-        <h1 class="course-title">{{ index . "course-title" }}</h1>
-        <p class="course-introduction"> {{ index . "course-introduction" }}
-        </p>
-        <div class="course-info">
-          {{ range ( index . "course-info" ) }}
-          <div class="course-info__group">
-            <span class="course-info__field">{{ index . "field" }}</span>
-            <a class="course-info__value {{ with index . "icon" }} link--{{- . -}} {{ end }}" {{ with index . "url" }} href="{{ . }}" {{ else }} disabled="true" {{ end }}>{{ index . "value" }}</a>
-          </div>
-          {{ end }}
+         {{ index . "course-introduction" }}
+      </div>
+      <div class="course-info">
+        {{ range ( index . "course-info" ) }}
+        <div class="course-info__group">
+          <span class="course-info__field">{{ index . "field" }}</span>
+          <a class="course-info__value {{ with index . "icon" }} link--{{- . -}} {{ end }}" {{ with index . "url" }} href="{{ . }}" {{ else }} disabled="true" {{ end }} target="_blank">{{ index . "value" }}</a>
         </div>
+        {{ end }}
       </div>
     </div>
     <div class="course-syllabus page-link-position-fixer" id="syllabus">
@@ -42,18 +38,16 @@
           </tr>
         </thead>
         <tbody>
-          {{ range where $.Site.Pages.Reverse "Section" ((index . "course-number") | upper | urlize) }}
+          {{ range where $.Site.Pages.Reverse "Section" ((index . "course-number") | urlize) }}
             {{ $is_section := eq .Kind "section" }}
             {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
             {{ if (not (or $is_hide $is_section)) }}
-              {{ if (isset .Params "volumes") }}
-                {{ if eq (index .Params.volumes 0) $courseNumber }}
+              {{ if eq .Section ($courseNumber | urlize) }}
                 <tr>
-                  <td align="center">{{ .Param "Issue" }}</td>
+                  <td align="center">{{- index (.Param "Volumes") 0 -}}.{{- .Param "Issue" -}}</td>
                   <td align="center" class="date mobile-hide" style="font-weight: 500"><sup>{{ .PublishDate.Format "1" }}</sup><span class="slash">/</span><sub>{{ .PublishDate.Format "2" }}</sub></td>
-                  <td class="wrap"><b>{{ .Title }}</b><br>{{ (strings.TrimSuffix "<p></p>" .Summary) | safeHTML }}[<a href="{{ .Permalink }}">Note</a>]</td>
+                  <td class="wrap"><b>{{ .Title }}</b><br>{{ (strings.TrimSuffix "<p></p>" .Summary) | safeHTML }}[<a href="{{ .Permalink }}">Notes</a>]</td>
                 </tr>
-                {{ end }}
               {{ end }}
             {{ end }}
           {{ end }}

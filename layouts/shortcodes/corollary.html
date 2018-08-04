@@ -1,13 +1,14 @@
-<div class="block block--theorem">
-  <span class="block__title block__title--theorem">Corollary
+<div class="block block--green {{ with .Get "status" }}block--status{{ end }}">
+  {{- with .Get "status" -}}<div class="block__status block__status--{{ . }}"></div>{{ end }}
+  <span class="block__title block__title--green">Corollary
   {{with .Get "index"}}
-  {{.}}
+  {{ . }}
   {{- end -}}
   {{ with .Get "name" }}
-  {{.}}
+  {{ . }}
   {{ end }}
   </span>
-  <div class="block__content block__content--theorem">
+  <div class="block__content block__content--green">
   {{ .Inner }}
   </div>
 </div>

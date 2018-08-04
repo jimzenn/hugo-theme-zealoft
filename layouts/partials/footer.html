@@ -1,17 +1,19 @@
 <footer class="footer">
-  <span class="copyright">Copyright {{ now.Format "2006"  }} Jim Zenn All rights reserved.</span>
-  <ul class="footer-links">
-    <li>
-      <a href="{{ .Site.Params.CV }}">CV</a>
-    </li>
-    <li>
-      <a href="{{ .Site.RSSLink }}" type="application/rss+xml" target="_blank">RSS</a>
-    </li>
-    <li>
-      <a href="{{ .Site.Params.github }}">code</a>
-    </li>
-    <li>
-      <a href="mailto:{{ .Site.Params.email }}">email</a>
-    </li>
-  </ul>
+  <div class="footer__wrapper">
+    <span class="copyright">Copyright {{ now.Format "2006"  }} Jim Zenn All rights reserved.</span>
+    <ul class="footer-links">
+      <li>
+        <a href="{{ .Site.Params.CV }}">CV</a>
+      </li>
+      <li>
+        <a href="{{ .Site.RSSLink }}" type="application/rss+xml" target="_blank">RSS</a>
+      </li>
+      <li>
+        <a href="{{ .Site.Params.github }}">code</a>
+      </li>
+      <li>
+        <a href="mailto:{{ .Site.Params.email }}">email</a>
+      </li>
+    </ul>
+  </div>
 </footer>

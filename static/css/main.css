@@ -4,6 +4,7 @@
   /* fonts */
   --display-font: "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   --text-font: "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --math-font: "CMU Serif", serif;
   --serif-font: "Untitled Serif", serif;
   --monospaced-font: "SF Mono", 'Pragmata Pro', 'source-code-pro', monospace;
 
@@ -18,12 +19,18 @@
   --green-text-color: #0c5460;
   --green-background-color: #d1ecf1;
   --green-border-color: #bee5eb;
+  --green-saturated-color: #00AB22;
   --gray-text-color: #312e37;
   --gray-background-color: #f6f6f7;
   --gray-border-color: #f1f0f3;
   --yellow-text-color: #856404;
   --yellow-background-color: #fff3cd;
   --yellow-border-color: #ffeeba;
+  --yellow-saturated-color: #FECD0A;
+  --red-text-color: #721c24;
+  --red-background-color: #f8d7da;
+  --red-border-color: #f5c6cb;
+  --red-saturated-color: #FC1509;
 }
 
 .link--external:after,
@@ -31,45 +38,35 @@
 .link--map:after,
 .link--calendar:after {
   display: inline-block;
-  text-indent: -9999px;
+  text-indent: -999jpx;
   color: transparent;
   vertical-align: baseline;
+  background-size: 1.2em 1.2em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-left: .5em;
+  padding-top: .15em;
+  width: 1.2em;
 }
 
 .link--download:after {
   content: "download";
-  background: url('/images/UI/download.svg') no-repeat;
-  background-size: 1em 1em;
-  background-position: center .23em;
-  width: 1em;
-  margin-left: .5em;
+  background-image: url('/images/UI/download.svg');
 }
 
 .link--external:after {
   content: "external";
-  background: url('/images/UI/external.svg') no-repeat;
-  background-size: .8em .8em;
-  background-position: center center;
-  width: 1em;
-  margin-left: .3em;
+  background-image: url('/images/UI/external.svg');
 }
 
 .link--map:after {
   content: "map";
-  background: url('/images/UI/map.svg') no-repeat;
-  background-size: .95em .95em;
-  background-position: center center;
-  width: 1em;
-  margin-left: .4em;
+  background-image: url('/images/UI/map.svg');
 }
 
 .link--calendar:after {
   content: "calendar";
-  background: url('/images/UI/calendar-2.svg') no-repeat;
-  background-size: .95em .95em;
-  background-position: center center;
-  width: 1em;
-  margin-left: .45em;
+  background-image: url('/images/UI/calendar.svg');
 }
 
 html,
@@ -169,7 +166,6 @@ hr {
   margin-right: auto;
   box-sizing: border-box;
   width: 100%;
-  overflow-x: scroll;
 }
 
 .message--empty {
@@ -208,34 +204,44 @@ hr {
 
 /* ===== pagination ===== */
 .pagination {
-  margin: auto;
+}
+
+.pagination-wrapper {
   display: flex;
-  margin-top: 12px;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: space-between;
+  margin-bottom: 18px;
 }
 
 .pagination__prev,
 .pagination__next {
-  display: block;
+  display: inline-flex;
   font-weight: 500;
   color:  var(--text-color);
   text-decoration: none;
   white-space: nowrap;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
+  font-size: 90%;
+  line-height: 1.4;
+  margin-bottom: .6em;
 }
 
 .pagination__prev:before,
+.pagination__prev:after,
+.pagination__next:before,
 .pagination__next:after {
+  display: block;
   color: var(--link-color);
 }
 
 .pagination__prev:before {
-  content: "« ";
+  content: "«";
+  margin-right: .7em;
 }
 
 .pagination__next:after {
-  content: " »";
+  content: "»";
+  margin-left: .7em;
 }
 
 /* ===== footer ===== */
@@ -247,11 +253,20 @@ hr {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 40px;
-  margin-top: 50px;
   padding: 0;
   text-align: center;
-  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.footer__wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-top: #EEE 1px solid;
+  padding: 15px 0;
+  margin-bottom: 10px;
 }
 
 .footer * {
@@ -296,7 +311,6 @@ hr {
   color: #888;
   text-decoration: none;
   transition: color 300ms;
-  margin-right: 20px;
 }
 
 code.has-jax {
@@ -311,3 +325,6 @@ code.has-jax {
   display: none;
 }
 
+.hide {
+  display: none;
+}

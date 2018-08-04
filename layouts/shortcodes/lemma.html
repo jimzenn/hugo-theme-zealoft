@@ -1,13 +1,13 @@
-<div class="block block--theorem">
-  <span class="block__title block__title--theorem">Lemma
+<div class="block block--green">
+  <span class="block__title block__title--green">Lemma
   {{with .Get "index"}}
-  {{.}}
+  {{ . }}
   {{- end -}}
   {{- with .Get "name" -}}
-  : {{.}}
+  : {{ . }}
   {{ end }}
   </span>
-  <div class="block__content block__content--theorem">
+  <div class="block__content block__content--green">
   {{ .Inner }}
   </div>
 </div>

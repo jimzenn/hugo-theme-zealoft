@@ -1,10 +1,11 @@
-<div class="block block--note">
-  <span class="block__title block__title--note">Remarks
+<div class="block block--yellow {{ with .Get "status" }}block--status{{ end }}">
+  {{- with .Get "status" -}}<div class="block__status block__status--{{ . }}"></div>{{ end }}
+  <span class="block__title block__title--yellow">Remarks
   {{- with .Get "name" -}}
-  : {{.}}
+  : {{ . }}
   {{ end }}
   </span>
-  <div class="block__content block__content--note">
+  <div class="block__content block__content--yellow">
   {{ .Inner }}
   </div>
 </div>

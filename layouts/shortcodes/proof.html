@@ -1,12 +1,14 @@
 <div class="proof">
-  <span class="proof__title">Proof
-    <span class="proof__method">
-      {{ with .Get "name" }}
-      {{.}}
-      {{ end }}
+  <div class="proof__heading">
+    <span class="proof__title">Proof
+      <span class="proof__method">
+        {{ with .Get "name" }}
+        {{.}}
+        {{ end }}
+      </span>
     </span>
-  </span> 
-  <span class="proof__expand">[<a>expand</a>]</span>
+    <span class="proof__expand">[<a>expand</a>]</span>
+  </div>
   <div class="proof__content">
     {{ .Inner }}
   </div>

@@ -8,60 +8,20 @@
       processEnvironments: true,
       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
       TeX: { equationNumbers: { autoNumber: "AMS" },
-           extensions: ["AMSmath.js", "AMSsymbols.js"] }
+           extensions: ["AMSmath.js", "AMSsymbols.js"] },
+    },
+    "HTML-CSS": {
+      linebreaks: { automatic: true, width: "container" }
     },
     {{ if in (.Site.BaseURL | string) "localhost" }}
-      "fast-preview": {
-        Chunks: {EqnChunk: 10000, EqnChunkFactor: 1, EqnChunkDelay: 0},
-        color: "inherit!important",
-        updateTime: 30, updateDelay: 6,
-        messageStyle: "none",
-        disabled: false
-      }
+    "fast-preview": {
+      Chunks: {EqnChunk: 10000, EqnChunkFactor: 1, EqnChunkDelay: 0},
+      color: "inherit!important",
+      updateTime: 30, updateDelay: 6,
+      messageStyle: "none",
+      disabled: false
+    },
     {{ end }}
   });
 
-  MathJax.Hub.Queue(function() {
-    // Fix <code> tags after MathJax finishes running. This is a
-    // hack to overcome a shortcoming of Markdown. Discussion at
-    // https://github.com/mojombo/jekyll/issues/199
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-
-  MathJax.Hub.Config({
-  // Autonumbering by mathjax
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-  });
 </script>
-
-<script type="text/javascript">
-  var list = document.querySelectorAll('.proof__expand');
-  for (var i = 0; i < list.length; i++) {
-    list[i].addEventListener("click", function(e){
-      var proofContent = e.target.parentNode.nextSibling.nextSibling;
-      var proofMethod = e.target.parentNode.previousSibling.previousSibling.childNodes[1];
-      if (e.target.innerHTML == "expand") {
-        proofContent.style.display = "inline";
-        proofMethod.style.display = "inline";
-        e.target.innerHTML = "collapse";
-      } else {
-        proofContent.style.display = "none";
-        proofMethod.style.display = "none";
-        e.target.innerHTML = "expand";
-      }
-    });
-  }
-
-</script>
-
-{{ if in (.Site.BaseURL | string) "localhost" }}
-<script type="text/javascript">
-  var list = document.querySelectorAll('.proof__expand a');
-  for (var i = 0; i < list.length; i++) {
-    list[i].click();
-  }
-</script>
-{{ end }}

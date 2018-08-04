@@ -8,41 +8,41 @@
       </a>
       {{ if not .IsHome }}
         <b class="header__section-title">
-          {{ if (isset .Params "menu_title") }}
-            {{ .Params.menu_title }}
+          {{ with ($.Param "menuTitle") }}
+            {{ . }}
           {{ else }}
-            {{ $.Title }}
+            {{ $.Section | humanize }}
           {{ end }}
         </b>
       {{ end }}
     </span>
   </div>
-  <button class="global-nav__toggle" id="global-nav-toggle"></button>
-  <nav class="global-nav" id="global-nav">
-      <ul class="global-nav__list">
+  <button class="header-menu__toggle" id="header-menu-toggle"></button>
+  <nav class="header-menu" id="header-menu">
+      <ul class="header-menu__list">
         {{ range .Site.Menus.main }}
-        <li class="global-nav__item"><a class="global-nav__link" href="{{ .URL }}">{{ .Name }}</a></li>
+        <li class="header-menu__item"><a class="header-menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
         {{ end }}
       </ul>
   </nav>
-  <nav class="global-nav--collapsable" id="collapsable-menu">
-    <ul class="global-nav__list--collapsable">
+  <nav class="header-menu--collapsable" id="collapsable-menu">
+    <ul class="header-menu__list--collapsable">
       {{ range .Site.Menus.main }}
-      <li class="global-nav__item"><a class="global-nav__link" href="{{ .URL }}">{{ .Name }}</a></li>
+      <li class="header-menu__item"><a class="header-menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
       {{ end }}
     </ul>
   </nav>
 </header>
 
 <script>
-var toggle = document.getElementById("global-nav-toggle");
+var toggle = document.querySelector("#header-menu-toggle");
 toggle.addEventListener("click", function() {
-  var content = document.getElementById("collapsable-menu");
-  var globalNav = document.getElementById("global-nav");
-  var header = document.getElementById("header");
-  var headerBg = document.getElementById("header-bg");
-  this.classList.toggle("global-nav__toggle--active");
-  content.classList.toggle("global-nav--collapsable--active");
+  var content = document.querySelector("#collapsable-menu");
+  var globalNav = document.querySelector("#header-menu");
+  var header = document.querySelector("#header");
+  var headerBg = document.querySelector("#header-bg");
+  this.classList.toggle("header-menu__toggle--active");
+  content.classList.toggle("header-menu--collapsable--active");
   header.classList.toggle("header--active");
   headerBg.classList.toggle("header-bg--active");
 });

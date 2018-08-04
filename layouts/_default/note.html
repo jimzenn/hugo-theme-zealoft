@@ -1,36 +1,87 @@
-{{- define "type" -}} note {{- end -}}
+{{- define "type" -}} note wide {{- end -}}
 
 {{ define "links" }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/note.css?v=2.1" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/note.css?v=2.4" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v=2.4" media="all">
 {{ end }}
 
 {{ define "body" }}
 
-  {{ partial "header.html" . }}
+{{ partial "header.html" . }}
+
+{{ $courseNumber := ( .Section | humanize | upper ) }}
+{{ $courseData := (index (where $.Site.Data.courses "course-number" $courseNumber) 0) }}
+{{ $volume := index (.Param "Volumes") 0 }}
+{{ $issue := .Param "Issue" }}
+{{ $supTitle := (printf "%s, Section %s.%d" $courseNumber $volume $issue) }}
+
+{{ partial "navigation.html" ( dict "supTitle" $supTitle "title" .Title "navigation" (dict) "emphColor" (index $courseData "course-color") ) }}
 
   <main class="content" role="main">
     <article class="article">
-
-      {{ if not (isset .Params "content-only") }}
-      <h1 class="article__title">{{ .Title }}</h1>
-      {{ partial "article-meta.html" . }}
-      <hr class="article__seperator">
-      {{ end }}
-
       <div class="article__content">
         {{ .Content }}
       </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          keywordDOMs = document.querySelectorAll(".keyword");
+          containerDOM = document.querySelector(".article__content");
+          if (keywordDOMs.length > 0) {
+            keywordListDOM = document.createElement("ul");
+            keywordListDOM.setAttribute("class", "keywords");
+            for (var i = 0; i < keywordDOMs.length; i++ ) {
+              console.log("test");
+              var keywordItemDOM = document.createElement("li");
+              var keywordLinkDOM = document.createElement("a");
+              keywordLinkDOM.setAttribute("href", "#" + keywordDOMs[i].id);
+              keywordLinkDOM.innerHTML = keywordDOMs[i].innerHTML;
+              keywordItemDOM.appendChild(keywordLinkDOM);
+              keywordListDOM.appendChild(keywordItemDOM);
+            }
+            containerDOM.insertBefore(keywordListDOM,
+              document.querySelector(".article__content p"));
+          }
+        });
+      </script>
     </article>
+    <aside class="section-navigation">
+      <ul class="section-navigation__list">
+      {{ $uid := .UniqueID }}
+      {{ range where $.Site.Pages.Reverse "Section" (.Section | urlize) }}
+        {{ $is_section := eq .Kind "section" }}
+        {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
+        {{ $is_current := eq .UniqueID $uid }}
+        {{ if (not (or $is_hide $is_section)) }}
+          {{ if eq .Section ($courseNumber | urlize) }}
+            {{ $index := printf "%s.%d" (index (.Param "Volumes") 0) (.Param "Issue") }}
+            <li class="section-navigation__item {{ if $is_current }}section-navigation__item--current{{ end }}">
+              <a href="/{{ .Section | urlize }}/{{ $index | urlize }}"><span class="section-navigation__index">{{ $index }}</span> {{ .Title }}</a>
+            </li>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      </ul>
+    </aside>
   </main>
 
   {{ if eq .Kind "page" }}
   <div class="pagination">
-    {{ with .PrevInSection }}
-    <a href="{{ .Permalink }}" target="_blank" class="pagination__prev">{{ .Title }}</a>
-    {{ end }}
-    {{ with .NextInSection }}
-    <a href="{{ .Permalink }}" target="_blank" class="pagination__next">{{ .Title }}</a>
-    {{ end }}
+    <div class="pagination-wrapper">
+      {{ with .PrevInSection }}
+        {{ $is_section := eq .Kind "section" }}
+        {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
+        {{ if (not (or $is_hide $is_section)) }}
+          <a href="{{ .Permalink }}" class="pagination__prev">{{ with .Param "volumes" }}{{ index . 0 }}{{ end }}.{{ with .Param "issue" }}{{ . }}{{ end }} {{ .Title }}</a>
+        {{ end }}
+      {{ end }}
+      {{ with .NextInSection }}
+        {{ $is_section := eq .Kind "section" }}
+        {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
+        {{ if (not (or $is_hide $is_section)) }}
+          <a href="{{ .Permalink }}" class="pagination__next">{{ with .Param "volumes" }}{{ index . 0 }}{{ end }}.{{ with .Param "issue" }}{{ . }}{{ end }} {{ .Title }}</a>
+        {{ end }}
+      {{ end }}
+    </div>
   </div>
   {{ end }}
 

@@ -1,14 +1,10 @@
+.article {
+  width: 100%;
+}
+
 .article__title a {
   color: inherit;
   text-decoration: none;
-}
-
-.article__toc {
-  display: none;
-  top: 0;
-  padding: 120px 60px 30px 0;
-  margin-right: 70px;
-  border-right: solid 1px #F5F5F5;
 }
 
 .article__volume-link {
@@ -19,13 +15,6 @@
 
 .article__volume-link:hover {
   color: #0070c9;
-}
-
-.article__toc__title {
-  display: block;
-  font-weight: 700;
-  font-size: 20px;
-  margin-bottom: 15px;
 }
 
 .article__title {
@@ -53,127 +42,4 @@
   display: block;
   -webkit-margin-start: auto;
   -webkit-margin-end: auto;
-}
-
-.article__content > p:first-of-type {
-  font-family: var(--display-font);
-  font-weight: 400;
-  color: #777;
-  margin-bottom: 60px;
-}
-
-.article__content > hr {
-  height: 1px;
-  background: #eeeeee;
-  margin: 30px 0 !important;
-}
-
-.article__content h1,
-.article__content h2 {
-  font-family: var(--display-font);
-  font-weight: 500;
-}
-
-.article__content h3 {
-  font-weight: 700;
-}
-
-.article__content a {
-  color: #0070c9;
-}
-
-.article__content b,
-.article__content strong {
-  font-weight: 500;
-}
-
-.article__content img {
-  width: 100%;
-}
-
-.article__content h1+*:not(p),
-.article__content h2+*:not(p),
-.article__content h3+*:not(p) {
-  margin-top: 1.25em;
-}
-
-.article__content h4+*:not(p) {
-  margin-top: 1em;
-}
-
-.article__content h1+p,
-.article__content h2+p,
-.article__content h3+p {
-  padding-top: .75em;
-}
-
-.article__content h4+p {
-  padding-top: .5em;
-}
-
-
-.article__content h1+*,
-.article__content h2+*,
-.article__content h3+* {
-  padding-top: .75em;
-}
-
-.article__content h4+* {
-  padding-top: .5em;
-}
-
-.article__content ol {
-  list-style-type: none;
-  counter-reset: item;
-  margin: 0;
-  padding: 0;
-}
-
-.article__content ol > li {
-  display: table;
-  counter-increment: item;
-  margin-bottom: 0.6em;
-}
-
-.article__content ol > li:before {
-  content: counters(item, ".") ". ";
-  display: table-cell;
-  padding-right: 0.6em;
-}
-
-.article__content li ol > li {
-  margin: 0;
-}
-
-.article__content li ul > li {
-  list-style-type: none;
-}
-
-.article__content li ol > li:before {
-  content: counters(item, ".") " ";
-}
-
-.article__content p+*,
-.article__content ul+*,
-.article__content ol+* {
-  margin-top: .7em;
-}
-
-.article__content ul ul,
-.article__content ul ol,
-.article__content ol ul,
-.article__content ol ol {
-  margin-top: 0;
-}
-
-.article__content td,
-.article__content th {
-  padding-top: .6rem;
-  padding-bottom: .6rem;
-  padding-right: 1.6rem;
-  padding-left: .8rem;
-}
-
-.article__content th {
-  border-bottom: solid 1px #333 !important;
 }

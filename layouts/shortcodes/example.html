@@ -1,10 +1,11 @@
-<div class="block block--example">
-  <span class="block__title block__title--example">Example
+<div class="block block--gray {{ with .Get "status" }}block--status{{ end }}">
+  {{- with .Get "status" -}}<div class="block__status block__status--{{ . }}"></div>{{ end }}
+  <span class="block__title block__title--gray">Example
   {{- with .Get "name" -}}
   : {{.}}
   {{ end }}
   </span>
-  <div class="block__content block__content--example">
+  <div class="block__content block__content--gray">
   {{ .Inner }}
   </div>
 </div>

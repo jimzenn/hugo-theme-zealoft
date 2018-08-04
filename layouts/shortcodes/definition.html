@@ -1,10 +1,11 @@
-<div class="block block--definition">
-  <span class="block__title block__title--definition">Definition
-  {{- with .Get "name" -}}
-  : {{.}}
-  {{ end }}
+<div class="block block--blue {{ with .Get "status" }}block--status{{ end }}">
+  {{- with .Get "status" -}}<div class="block__status block__status--{{ . }}"></div>{{ end }}
+  <span class="block__title block__title--blue">Definition
+    {{- with .Get "name" -}}
+    : <span class="keyword" id="{{ . | urlize }}">{{ . | title }}</span>
+    {{- end -}}
   </span>
-  <div class="block__content block__content--definition">
+  <div class="block__content block__content--blue">
     {{ .Inner }}
   </div>
 </div>
