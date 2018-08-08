@@ -7,13 +7,13 @@
       {{ .Site.Title }}
       </a>
       {{ if not .IsHome }}
-        <b class="header__section-title">
-          {{ with ($.Param "menuTitle") }}
-            {{ . }}
-          {{ else }}
-            {{ $.Section | humanize }}
-          {{ end }}
-        </b>
+          <b class="header__section-title">
+            {{ with ($.Param "menuTitle") }}
+              {{ . }}
+            {{ else }}
+              {{ $.Section | humanize }}
+            {{ end }}
+          </b>
       {{ end }}
     </span>
   </div>

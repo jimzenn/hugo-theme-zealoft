@@ -17,35 +17,38 @@
 
 {{ partial "navigation.html" ( dict "supTitle" $supTitle "title" .Title "navigation" (dict) "emphColor" (index $courseData "course-color") ) }}
 
+
   <main class="content" role="main">
     <article class="article">
       <div class="article__content">
+        <script>
+          keywordsCollector = [];
+          keywordsCounter = 0;
+        </script>
         {{ .Content }}
       </div>
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          keywordDOMs = document.querySelectorAll(".keyword");
-          containerDOM = document.querySelector(".article__content");
-          if (keywordDOMs.length > 0) {
-            keywordListDOM = document.createElement("ul");
-            keywordListDOM.setAttribute("class", "keywords");
-            for (var i = 0; i < keywordDOMs.length; i++ ) {
-              console.log("test");
-              var keywordItemDOM = document.createElement("li");
-              var keywordLinkDOM = document.createElement("a");
-              keywordLinkDOM.setAttribute("href", "#" + keywordDOMs[i].id);
-              keywordLinkDOM.innerHTML = keywordDOMs[i].innerHTML;
-              keywordItemDOM.appendChild(keywordLinkDOM);
-              keywordListDOM.appendChild(keywordItemDOM);
-            }
-            containerDOM.insertBefore(keywordListDOM,
-              document.querySelector(".article__content p"));
-          }
-        });
-      </script>
     </article>
-    <aside class="section-navigation">
-      <ul class="section-navigation__list">
+    <aside class="navigation--side">
+			<div class="navigation--side__selector">
+				<button class="navigation--side__button navigation--side__button--active" id="navigation--side__button--section" onclick="navigationSideSwitchToSection()">Section</button>
+				<button class="navigation--side__button" id="navigation--side__button--page" onclick="navigationSideSwitchToPage()">Page</button>
+        <script>
+          function navigationSideSwitchToSection() {
+            document.getElementById("page-navigation").setAttribute("style","display: none;");
+            document.getElementById("section-navigation").setAttribute("style","display: block;");
+            document.getElementById("navigation--side__button--section").classList.add("navigation--side__button--active");
+            document.getElementById("navigation--side__button--page").classList.remove("navigation--side__button--active");
+          }
+
+          function navigationSideSwitchToPage() {
+            document.getElementById("section-navigation").setAttribute("style","display: none;");
+            document.getElementById("page-navigation").setAttribute("style","display: block;");
+            document.getElementById("navigation--side__button--section").classList.remove("navigation--side__button--active");
+            document.getElementById("navigation--side__button--page").classList.add("navigation--side__button--active");
+          }
+        </script>
+			</div>
+      <ul class="navigation--side__list" id="section-navigation">
       {{ $uid := .UniqueID }}
       {{ range where $.Site.Pages.Reverse "Section" (.Section | urlize) }}
         {{ $is_section := eq .Kind "section" }}
@@ -54,12 +57,20 @@
         {{ if (not (or $is_hide $is_section)) }}
           {{ if eq .Section ($courseNumber | urlize) }}
             {{ $index := printf "%s.%d" (index (.Param "Volumes") 0) (.Param "Issue") }}
-            <li class="section-navigation__item {{ if $is_current }}section-navigation__item--current{{ end }}">
-              <a href="/{{ .Section | urlize }}/{{ $index | urlize }}"><span class="section-navigation__index">{{ $index }}</span> {{ .Title }}</a>
+            <li class="navigation--side__item {{ if $is_current }}navigation--side__item--current{{ end }}">
+              <a href="/{{ .Section | urlize }}/{{ $index | urlize }}"><span class="navigation--side__index">{{ $index }}</span> {{ .Title }}</a>
             </li>
           {{ end }}
         {{ end }}
       {{ end }}
+      </ul>
+      <ul class="navigation--side__list" id="page-navigation">
+        <script>
+          var pageNavigationListDOM = document.getElementById("page-navigation");
+          for (var i = 0; i < keywordsCollector.length; i ++) {
+            pageNavigationListDOM.appendChild(keywordsCollector[i]);
+          }
+        </script>
       </ul>
     </aside>
   </main>

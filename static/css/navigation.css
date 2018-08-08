@@ -140,6 +140,10 @@
 }
 
 @media (max-width: 735px) {
+  .navigation {
+    margin-top: 15px;
+  }
+
   .navigation__sup-title {
     font-size: 13px;
     line-height: 16px;
@@ -152,6 +156,8 @@
 }
 
 @media (max-width: 420px) {
-
+  .navigation {
+    margin-top: 8px;
+  }
 }
 
