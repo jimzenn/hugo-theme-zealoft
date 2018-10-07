@@ -1,12 +1,10 @@
 {{- define "type" -}} single {{- end -}}
 
 {{ define "links" }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/single.css?v=2.4" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/single.css?v={{ .Site.Params.version }}" media="all">
 {{ end }}
 
 {{ define "body" }}
-
-  {{ partial "header.html" . }}
 
   <main class="content" role="main">
     <article class="article">

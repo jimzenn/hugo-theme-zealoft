@@ -1,13 +1,11 @@
 {{- define "type" -}} course wide {{- end -}}
 
 {{ define "links" }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/course.css?v=2.4" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v=2.4" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/course.css?v={{ .Site.Params.version }}" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v={{ .Site.Params.version }}" media="all">
 {{ end }}
 
 {{ define "body" }}
-
-  {{ partial "header.html" . }}
 
   {{ $courseData := index (where $.Site.Data.courses "course-number" ($.Param "courseNumber") ) 0 }}
   {{ partial "navigation.html" (dict "supTitle" (index $courseData "course-number") "title" (index $courseData "course-title") "navigation" (index $courseData "navigation") "emphColor" (index $courseData "course-color")) }}
@@ -46,7 +44,7 @@
                 <tr>
                   <td align="center">{{- index (.Param "Volumes") 0 -}}.{{- .Param "Issue" -}}</td>
                   <td align="center" class="date mobile-hide" style="font-weight: 500"><sup>{{ .PublishDate.Format "1" }}</sup><span class="slash">/</span><sub>{{ .PublishDate.Format "2" }}</sub></td>
-                  <td class="wrap"><b>{{ .Title }}</b><br>{{ (strings.TrimSuffix "<p></p>" .Summary) | safeHTML }}[<a href="{{ .Permalink }}">Notes</a>]</td>
+                  <td class="wrap"><b>{{ .Title | title }}</b><br>{{ (strings.TrimSuffix "<p></p>" .Summary) | safeHTML }}[<a href="{{ .Permalink }}">Notes</a>]</td>
                 </tr>
               {{ end }}
             {{ end }}

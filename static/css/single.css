@@ -54,6 +54,9 @@
   padding-top: .5em;
 }
 
+.article__content > ul {
+  margin-left: 25px;
+}
 
 .article__content h1+*,
 .article__content h2+*,
@@ -63,6 +66,10 @@
 
 .article__content h4+* {
   padding-top: .5em;
+}
+
+.article__title {
+  padding-top: 40px;
 }
 
 @media (min-width: 1069px) {

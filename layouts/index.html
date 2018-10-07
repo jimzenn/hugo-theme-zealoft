@@ -1,18 +1,16 @@
-{{- define "type" -}} home header-fixed {{- end -}}
+{{- define "type" -}} home {{- end -}}
 
 {{ define "links" }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/jumbotron.css?v=2.4" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/jumbotron.css?v={{ .Site.Params.version }}" media="all">
 {{ end }}
 
 {{ define "body" }}
-
-  {{ partial "header.html" . }}
 
   {{ partial "jumbotron.html" . }}
 
   <main class="content" role="main">
     <div class="article-list">
-      {{ range where .Site.Pages "Section" "posts" }}
+      {{ range where .Site.Pages "Section" "blog" }}
         {{ $is_section := eq .Kind "section" }}
         {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
         {{ if (not (or $is_hide $is_section)) }}
@@ -26,8 +24,6 @@
   </main>
 
   {{ partial "footer.html" . }}
-
-  {{ partial "scripts.html" . }}
 
 {{ end }}
 

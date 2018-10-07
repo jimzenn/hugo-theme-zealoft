@@ -1,13 +1,11 @@
 {{- define "type" -}} note wide {{- end -}}
 
 {{ define "links" }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/note.css?v=2.4" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v=2.4" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/note.css?v={{ .Site.Params.version }}" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v={{ .Site.Params.version }}" media="all">
 {{ end }}
 
 {{ define "body" }}
-
-{{ partial "header.html" . }}
 
 {{ $courseNumber := ( .Section | humanize | upper ) }}
 {{ $courseData := (index (where $.Site.Data.courses "course-number" $courseNumber) 0) }}
@@ -30,8 +28,8 @@
     </article>
     <aside class="navigation--side">
 			<div class="navigation--side__selector">
-				<button class="navigation--side__button navigation--side__button--active" id="navigation--side__button--section" onclick="navigationSideSwitchToSection()">Section</button>
-				<button class="navigation--side__button" id="navigation--side__button--page" onclick="navigationSideSwitchToPage()">Page</button>
+				<button class="navigation--side__button navigation--side__button--active" id="navigation--side__button--section" onclick="navigationSideSwitchToSection()">Course Nav.</button>
+				<button class="navigation--side__button" id="navigation--side__button--page" onclick="navigationSideSwitchToPage()">Page Nav.</button>
         <script>
           function navigationSideSwitchToSection() {
             document.getElementById("page-navigation").setAttribute("style","display: none;");
@@ -50,15 +48,22 @@
 			</div>
       <ul class="navigation--side__list" id="section-navigation">
       {{ $uid := .UniqueID }}
+      {{ $.Scratch.Set "prev_volume" -1 }}
       {{ range where $.Site.Pages.Reverse "Section" (.Section | urlize) }}
         {{ $is_section := eq .Kind "section" }}
         {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
         {{ $is_current := eq .UniqueID $uid }}
         {{ if (not (or $is_hide $is_section)) }}
           {{ if eq .Section ($courseNumber | urlize) }}
-            {{ $index := printf "%s.%d" (index (.Param "Volumes") 0) (.Param "Issue") }}
+            {{ $volume := (index (.Param "Volumes") 0) }}
+            {{ if (not (or (eq $volume "D") (eq ($.Scratch.Get "prev_volume") $volume))) }}
+              {{ $.Scratch.Set "prev_volume" (index (.Param "Volumes") 0) }}
+              <li class="navigation--side__heading"><span class="navigation--side__heading-index">{{ $volume }}</span>{{index (index $courseData "course-chapters") (add (int $volume) -1) }}</li>
+            {{ end }}
+            {{ $issue := (.Param "Issue") }}
+            {{ $index := printf "%s.%d" $volume $issue }}
             <li class="navigation--side__item {{ if $is_current }}navigation--side__item--current{{ end }}">
-              <a href="/{{ .Section | urlize }}/{{ $index | urlize }}"><span class="navigation--side__index">{{ $index }}</span> {{ .Title }}</a>
+              <a href="{{ .Permalink }}"><span class="navigation--side__index">{{ $index }}</span> {{ .Title | title }}</a>
             </li>
           {{ end }}
         {{ end }}
@@ -96,7 +101,6 @@
   </div>
   {{ end }}
 
-  {{ partial "scripts.html" . }}
 
   {{ partial "footer.html" . }}
 

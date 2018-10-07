@@ -1,5 +1,5 @@
 <div class="navigation" id="navigation">
-  <div class="navigation__wrapper" id="navigation">
+  <div class="navigation__wrapper" id="navigation__toggle">
     <div class="navigation__left">
       <span class="navigation__sup-title" {{ with ( index . "emphColor" ) }}style="color: {{ . }}"{{ end }}>{{ index . "supTitle" }}</span>
       <span class="navigation__title">{{ index . "title" | title }}</span>
@@ -17,6 +17,17 @@
         {{ end }}
       {{ end }}
       </ul>
+      <ul class="navigation__list--collapsable">
+      {{ range ( index . "navigation" ) }}
+        {{ if not (index . "sep") }}
+          <li class="navigation__item">
+            <a class="navigation__link {{ with ( index . "icon" ) }}link--{{ . }}{{ end }}" href="{{ index . "url" }}" {{ if (index . "new-tab") }}target="_blank"{{ end }}>{{ index . "name" }}</a>
+          </li>
+        {{ else }}
+        <hr class="navigation__sep"/>
+        {{ end }}
+      {{ end }}
+      </ul>
     </div>
   </div>
 </div>
@@ -24,20 +35,35 @@
 <script>
   wasStuck = false;
   window.addEventListener('scroll', function(e) {
+    var header = document.querySelector("#header");
     var nav = document.querySelector("#navigation");
     var navWrapper = document.querySelector("#navigation .navigation__wrapper");
-    var navOffsetTop = nav.getBoundingClientRect().top;
-    if (navOffsetTop == 0) {
+    if (window.scrollY >= header.offsetHeight) {
       // stuck
       if (!wasStuck) {
+        nav.classList.add("navigation--stuck");
         navWrapper.classList.add("navigation__wrapper--stuck");
         wasStuck = true;
       }
     } else {
       if (wasStuck) {
+        nav.classList.remove("navigation--stuck");
         navWrapper.classList.remove("navigation__wrapper--stuck");
         wasStuck = false;
       }
     }
   });
+  var toggle = document.querySelector("#navigation__toggle");
+  var list = document.querySelector(".navigation__list--collapsable");
+  toggle.addEventListener("click", function() {
+    this.classList.toggle("navigation__toggle--active");
+    list.classList.toggle("navigation__list--collapsable--active");
+  });
+  var listItems = document.querySelectorAll(".navigation__list--collapsable .navigation__link");
+  for (var i = 0; i < listItems.length; i ++) {
+    listItems[i].addEventListener("click", function() {
+      document.querySelector("#navigation__toggle").click();
+      return true;
+    });
+  }
 </script>

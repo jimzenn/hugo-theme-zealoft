@@ -1,38 +1,3 @@
-:root {
-  font-size: 16px;
-
-  /* fonts */
-  --display-font: "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --text-font: "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --math-font: "CMU Serif", serif;
-  --serif-font: "Untitled Serif", serif;
-  --monospaced-font: "SF Mono", 'Pragmata Pro', 'source-code-pro', monospace;
-
-  /* color */
-  --text-color: #333;
-  --link-color: #0070c9;
-
-  /* Bootstrap Colors */
-  --blue-text-color: #004085;
-  --blue-background-color: #CCE6FF;
-  --blue-border-color: #b8daff;
-  --green-text-color: #0c5460;
-  --green-background-color: #d1ecf1;
-  --green-border-color: #bee5eb;
-  --green-saturated-color: #00AB22;
-  --gray-text-color: #312e37;
-  --gray-background-color: #f6f6f7;
-  --gray-border-color: #f1f0f3;
-  --yellow-text-color: #856404;
-  --yellow-background-color: #fff3cd;
-  --yellow-border-color: #ffeeba;
-  --yellow-saturated-color: #FECD0A;
-  --red-text-color: #721c24;
-  --red-background-color: #f8d7da;
-  --red-border-color: #f5c6cb;
-  --red-saturated-color: #FC1509;
-}
-
 .link--external:after,
 .link--download:after,
 .link--map:after,
@@ -73,9 +38,13 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--backdrop-color);
+  /* background-color: #6c7175; */
 }
 
 body {
+  position: relative;
+  z-index: -10;
   font-family: var(--text-font);
   font-size: 17px;
   line-height: 1.53;
@@ -85,6 +54,16 @@ body {
   font-feature-settings: 'kern';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  background: white;
+  min-height: 100vh;
+  z-index: 0;
+  transition: transform 0.5s var(--jerk-curve), border-radius 0.5s var(--jerk-curve), box-shadow 0.5s var(--jerk-curve);
+  box-shadow: 0 0 10px rgba(0,0,0, .1), -90vw 80px 0 #D4D4D4, -90vw 80px 10px rgba(0,0,0, .1), -100vw 10px 0 #9F9F9F, -100vw 10px 10px rgba(0,0,0, .1);
 }
 
 a {
@@ -121,7 +100,6 @@ h4 {
 }
 
 table {
-  font-size: 15px;
   color: #333;
   margin-top: 16px;
   margin-bottom: 16px;
@@ -131,7 +109,6 @@ table {
 
 ul, ol {
   list-style-position: outside;
-  margin-left: 25px;
 }
 
 li p {
@@ -147,10 +124,32 @@ blockquote {
   border-left: 5px #EAEAEA solid;
 }
 
-hr {
-  border: none;
-  margin-top: 32px;
-  margin-bottom: 32px;
+/* ===== perks ===== */
+
+span[note] {
+  position: relative;
+  border-bottom: 1px dotted #4b7698;
+  cursor: pointer;
+}
+
+span[note]:hover:after {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20vw;
+  min-width: 165px;
+  top: calc(100% + 4px);
+  display: inline-block;
+  content: attr(note);
+  background-color: white;
+  font-size: 11px;
+  padding: 6px 10px;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  white-space: normal;
+  z-index: 4;
+  font-weight: normal;
+  cursor: default;
 }
 
 /* ===== content ===== */
@@ -161,7 +160,6 @@ hr {
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 250px);
-  margin-top: 90px;
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
@@ -211,6 +209,7 @@ hr {
   flex-flow: row wrap;
   justify-content: space-between;
   margin-bottom: 18px;
+  margin-top: 30px;
 }
 
 .pagination__prev,
@@ -221,7 +220,6 @@ hr {
   text-decoration: none;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 90%;
   line-height: 1.4;
   margin-bottom: .6em;
 }
@@ -235,12 +233,14 @@ hr {
 }
 
 .pagination__prev:before {
-  content: "«";
+  /* content: "«"; */
+  content: "←";
   margin-right: .7em;
 }
 
 .pagination__next:after {
-  content: "»";
+  /* content: "»"; */
+  content: "→";
   margin-left: .7em;
 }
 
@@ -269,10 +269,6 @@ hr {
   margin-bottom: 10px;
 }
 
-.footer * {
-  font-size: 13px;
-}
-
 .footer-links {
   list-style: none;
   margin: 0;
@@ -297,13 +293,13 @@ hr {
   color: #222;
 }
 
-.footer-links li::before {
+.footer-links li:before {
   content: '•';
   position: relative;
   left: -2px;
 }
 
-.footer-links li:first-child::before {
+.footer-links li:first-child:before {
   display: none;
 }
 

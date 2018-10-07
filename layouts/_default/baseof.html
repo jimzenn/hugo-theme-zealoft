@@ -2,17 +2,38 @@
 <html lang="{{ .Site.LanguageCode }}">
   <head>
     {{ partial "head.html" . }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css?v=2.4" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/header.css?v=2.4" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/fonts.css?v=2.4" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/article.css?v=2.4" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/list.css?v=2.4" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/root.css?v={{ .Site.Params.version }}" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css?v={{ .Site.Params.version }}" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/header.css?v={{ .Site.Params.version }}" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/fonts.css?v={{ .Site.Params.version }}" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/article.css?v={{ .Site.Params.version }}" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/list.css?v={{ .Site.Params.version }}" media="all">
     {{ block "links" . }} {{ end }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/responsive.css?v=2.4" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/responsive.css?v={{ .Site.Params.version }}" media="all">
   </head>
 
   <body class="{{- block "type" . -}} {{- end -}}" >
-    {{ block "body" . }} {{ end }}
+    {{ partial "header.html" . }}
+    <div class="container" id="container">
+      {{ if not .IsHome }}
+        <div class="container-tag">
+          {{ with ($.Param "menuLogo") }}
+          <img class="container-logo" src="{{ . }}" alt="{{ $.Section }}">
+          {{ else }}
+          <b class="container-title">
+            {{- with ($.Param "menuTitle") -}}
+              {{- . -}}
+            {{- else -}}
+              {{- $.Section | humanize | upper -}}
+            {{- end -}}
+          </b>
+          {{ end }}
+        </div>
+      {{ end }}
+      {{ block "body" . }} {{ end }}
+    <div>
   </body>
+
+  {{ partial "scripts.html" . }}
 
 </html>
