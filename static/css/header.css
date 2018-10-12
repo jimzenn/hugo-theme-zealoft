@@ -127,9 +127,10 @@ body.home .header:hover {
   position: absolute !important;
   top: 48px;
   background: rgba(0,0,0,0.8);
-  left: 50%;
-  transform: translate(-50%);
+  /* left: 50%; */
+  /* transform: translate(-50%); */
   transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  width: auto;
 }
 
 .header-menu .header-menu__item--dropdown:hover .header-menu__item-menu {
@@ -147,9 +148,8 @@ body.home .header:hover {
   color: white;
   text-decoration: none;
   padding: 8px 10px;
+  white-space: nowrap;
   transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), background-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-  width: 80px;
-  text-align: center;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 

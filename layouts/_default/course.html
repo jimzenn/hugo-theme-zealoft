@@ -15,7 +15,7 @@
     {{ range where $.Site.Data.courses "course-number" (.Param "courseNumber") }}
     <div class="course-introduction">
       <div class="course-information">
-         {{ index . "course-introduction" }}
+         {{ index . "course-introduction" | safeHTML }}
       </div>
       <div class="course-info">
         {{ range ( index . "course-info" ) }}

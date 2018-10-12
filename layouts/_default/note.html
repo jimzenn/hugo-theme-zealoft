@@ -27,9 +27,9 @@
       </div>
     </article>
     <aside class="navigation--side">
-			<div class="navigation--side__selector">
-				<button class="navigation--side__button navigation--side__button--active" id="navigation--side__button--section" onclick="navigationSideSwitchToSection()">Course Nav.</button>
-				<button class="navigation--side__button" id="navigation--side__button--page" onclick="navigationSideSwitchToPage()">Page Nav.</button>
+      <div class="navigation--side__selector">
+        <button class="navigation--side__button navigation--side__button--active" id="navigation--side__button--section" onclick="navigationSideSwitchToSection()">Course Nav.</button>
+        <button class="navigation--side__button" id="navigation--side__button--page" onclick="navigationSideSwitchToPage()">Page Nav.</button>
         <script>
           function navigationSideSwitchToSection() {
             document.getElementById("page-navigation").setAttribute("style","display: none;");
@@ -45,7 +45,7 @@
             document.getElementById("navigation--side__button--page").classList.add("navigation--side__button--active");
           }
         </script>
-			</div>
+      </div>
       <ul class="navigation--side__list" id="section-navigation">
       {{ $uid := .UniqueID }}
       {{ $.Scratch.Set "prev_volume" -1 }}
