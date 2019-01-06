@@ -1,4 +1,4 @@
-body.course .content {
+body.subject .content {
   justify-content: flex-start;
 }
 
@@ -7,7 +7,7 @@ body.course .content {
   margin-top: -24px;
 }
 
-.course-introduction {
+.subject-introduction {
   display: flex;
   position: relative;
   flex-flow: row nowrap;
@@ -16,7 +16,7 @@ body.course .content {
   padding: 20px .5rem 0;
 }
 
-.course-information {
+.subject-information {
   width: 48%;
   min-width: 48%;
   margin-right: 70px;
@@ -25,26 +25,26 @@ body.course .content {
   line-height: 1.5625;
 }
 
-.course-info {
+.subject-info {
   display: flex;
   flex-flow: row wrap;
 }
 
-.course-info__group {
+.subject-info__group {
   display: flex;
   flex-direction: column;
   margin-right: 45px;
   margin-bottom: 15px;
 }
 
-.course-info__field {
+.subject-info__field {
   font-family: var(--text-font);
   font-size: 13.5px;
   letter-spacing: -0.29px;
   line-height: 22px;
 }
 
-.course-info__value {
+.subject-info__value {
   font-family: var(--display-font);
   font-weight: 500;
   font-size: 18.9px;
@@ -55,23 +55,23 @@ body.course .content {
   transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.course-info__value:hover:not([disabled]) {
+.subject-info__value:hover:not([disabled]) {
   color: var(--link-color);
 }
 
-.course-syllabus {
+.subject-syllabus {
   width: 100%;
 }
 
-.course-syllabus .hide {
+.subject-syllabus .hide {
   display: block;
 }
 
-.course-syllabus tr:first-of-type td {
+.subject-syllabus tr:first-of-type td {
   padding-top: .8em;
 }
 
-.course-syllabus table {
+.subject-syllabus table {
   width: 100%;
   color: #333;
   margin-top: 1em;
@@ -80,8 +80,8 @@ body.course .content {
   border-collapse: separate;
 }
 
-.course-syllabus td,
-.course-syllabus th {
+.subject-syllabus td,
+.subject-syllabus th {
   padding-top: .4em;
   padding-bottom: .4em;
   padding-right: 1.77em;
@@ -90,53 +90,53 @@ body.course .content {
   line-height: 1.47em;
 }
 
-.course-syllabus th {
+.subject-syllabus th {
   border-bottom: solid 1px #333;
 }
 
-.course-syllabus td.wrap,
-.course-syllabus th.wrap {
+.subject-syllabus td.wrap,
+.subject-syllabus th.wrap {
   white-space: normal;
 }
 
-.course-syllabus th {
+.subject-syllabus th {
   font-weight: 700;
 }
 
-.course-syllabus td p {
+.subject-syllabus td p {
   margin: 0;
 }
 
-.course-syllabus td.date sup {
+.subject-syllabus td.date sup {
   letter-spacing: -.1em;
 }
 
-.course-syllabus td.date .slash {
+.subject-syllabus td.date .slash {
   font-style: italic;
 }
 
-.course-syllabus tbody b {
+.subject-syllabus tbody b {
   font-weight: 500;
 }
 
-.course-resources {
+.subject-resources {
   width: 100%;
 }
 
-.course-resources__numbering {
+.subject-resources__numbering {
   color: var(--link-color);
 }
 
-.course-resources__title {
+.subject-resources__title {
   font-family: var(--display-font);
   padding-top: 30px;
   letter-spacing: 0.2px;
 }
 
-.course-resources__list {
+.subject-resources__list {
 }
 
-.course-resources__item {
+.subject-resources__item {
   list-style: none;
   margin-top: .75em;
   line-height: 1.52947;
@@ -145,11 +145,11 @@ body.course .content {
   word-wrap: break-word;
 }
 
-.course-resources__item b {
+.subject-resources__item b {
   font-weight: 700;
 }
 
-.course-resources__link {
+.subject-resources__link {
   white-space: normal;
 }
 
@@ -157,24 +157,24 @@ body.course .content {
 }
 
 @media (max-width: 1068px) {
-  .course-information {
+  .subject-information {
     margin-right: 0;
     margin-bottom: 30px;
     width: 100%;
   }
 
-  .course-introduction {
+  .subject-introduction {
     flex-direction: column;
   }
 }
 
 @media (max-width: 735px) {
-  .course-syllabus .mobile-hide {
+  .subject-syllabus .mobile-hide {
     display:none;
   }
 
-  .course-syllabus td,
-  .course-syllabus th {
+  .subject-syllabus td,
+  .subject-syllabus th {
     padding-right: 1.50em;
     padding-left: 0;
     white-space: nowrap;
@@ -183,12 +183,12 @@ body.course .content {
 }
 
 @media (max-width: 420px) {
-  .course-info__field {
+  .subject-info__field {
     font-size: 12.15px;
     line-height: 18px;
   }
 
-  .course-info__value {
+  .subject-info__value {
     font-size: 17px;
   }
 }

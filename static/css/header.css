@@ -13,7 +13,6 @@ body {
   z-index: 5;
   width: 100vw;
   box-sizing: border-box;
-  cursor: default;
   font-size: 17px;
   user-select: none;
   transition: background 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), height 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -50,6 +49,18 @@ body.home .header:hover {
   text-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
+.header__site-logo-link--home {
+  display: block;
+}
+
+.header__site-logo-link--toggle {
+  display: none;
+}
+
+#header-menu__toggle {
+  pointer-events: none;
+}
+
 .header__menu-icon {
   display: block;
   position: absolute;
@@ -60,11 +71,6 @@ body.home .header:hover {
 
 .header__menu-icon--shifted {
   transform: translateX(.5rem);
-}
-
-.header__site-logo-link {
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 .header__site-logo-image {
@@ -320,6 +326,24 @@ body.home .header:hover {
 @media (max-width: 735px) {
   .header {
     padding-left: 1rem;
+  }
+
+  body.home .header:hover {
+    background-color: transparent;
+  }
+
+  .header__site-logo-link--home {
+    display: none;
+  }
+
+  .header__site-logo-link--toggle {
+    display: block;
+  }
+
+  #header-menu__toggle {
+    pointer-events: auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   }
 
   .container-tag {

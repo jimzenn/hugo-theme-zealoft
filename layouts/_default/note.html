@@ -5,15 +5,26 @@
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v={{ .Site.Params.version }}" media="all">
 {{ end }}
 
+{{ define "menu-title" }}
+  {{- with ($.Param "menuTitle") -}}
+    {{- . -}}
+  {{- else -}}
+    Notes
+  {{- end -}}
+{{ end }}
+
 {{ define "body" }}
 
-{{ $courseNumber := ( .Section | humanize | upper ) }}
-{{ $courseData := (index (where $.Site.Data.courses "course-number" $courseNumber) 0) }}
+{{ $subjectTitle := ( .Section | humanize | title ) }}
+{{ $subjectData := (index (where $.Site.Data.subjects "subject-title" $subjectTitle) 0) }}
 {{ $volume := index (.Param "Volumes") 0 }}
 {{ $issue := .Param "Issue" }}
-{{ $supTitle := (printf "%s, Section %s.%d" $courseNumber $volume $issue) }}
+{{ $supTitle := (printf "%s, Section %s" $subjectTitle $volume) }}
+{{ if (isset .Params "issue") }}
+  {{ $supTitle = (printf "%s, Section %s.%d" $subjectTitle $volume $issue) }}
+{{ end }}
 
-{{ partial "navigation.html" ( dict "supTitle" $supTitle "title" .Title "navigation" (dict) "emphColor" (index $courseData "course-color") ) }}
+{{ partial "navigation.html" ( dict "supTitle" $supTitle "title" .Title "navigation" (dict) "emphColor" (index $subjectData "subject-color") ) }}
 
 
   <main class="content" role="main">
@@ -28,7 +39,7 @@
     </article>
     <aside class="navigation--side">
       <div class="navigation--side__selector">
-        <button class="navigation--side__button navigation--side__button--active" id="navigation--side__button--section" onclick="navigationSideSwitchToSection()">Course Nav.</button>
+        <button class="navigation--side__button navigation--side__button--active" id="navigation--side__button--section" onclick="navigationSideSwitchToSection()">subject Nav.</button>
         <button class="navigation--side__button" id="navigation--side__button--page" onclick="navigationSideSwitchToPage()">Page Nav.</button>
         <script>
           function navigationSideSwitchToSection() {
@@ -49,19 +60,23 @@
       <ul class="navigation--side__list" id="section-navigation">
       {{ $uid := .UniqueID }}
       {{ $.Scratch.Set "prev_volume" -1 }}
-      {{ range where $.Site.Pages.Reverse "Section" (.Section | urlize) }}
+      {{ range sort (where $.Site.Pages "Section" (.Section | urlize)) "Weight" "asc" }}
         {{ $is_section := eq .Kind "section" }}
         {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
         {{ $is_current := eq .UniqueID $uid }}
         {{ if (not (or $is_hide $is_section)) }}
-          {{ if eq .Section ($courseNumber | urlize) }}
+          {{ if eq .Section ($subjectTitle | urlize) }}
             {{ $volume := (index (.Param "Volumes") 0) }}
-            {{ if (not (or (eq $volume "D") (eq ($.Scratch.Get "prev_volume") $volume))) }}
-              {{ $.Scratch.Set "prev_volume" (index (.Param "Volumes") 0) }}
-              <li class="navigation--side__heading"><span class="navigation--side__heading-index">{{ $volume }}</span>{{index (index $courseData "course-chapters") (add (int $volume) -1) }}</li>
+            {{ if (index $subjectData "subject-chapters") }}
+              {{ if (not (or (eq $volume "D") (eq ($.Scratch.Get "prev_volume") $volume))) }} {{ $.Scratch.Set "prev_volume" (index (.Param "Volumes") 0) }}
+                <li class="navigation--side__heading"><span class="navigation--side__heading-index">{{ $volume }}</span>{{index (index $subjectData "subject-chapters") (add (int $volume) -1) }}</li>
+              {{ end }}
             {{ end }}
             {{ $issue := (.Param "Issue") }}
-            {{ $index := printf "%s.%d" $volume $issue }}
+            {{ $index := printf "%s" $volume }}
+            {{ if (isset .Params "issue") }}
+              {{ $index = printf "%s.%d" $volume $issue }}
+            {{ end }}
             <li class="navigation--side__item {{ if $is_current }}navigation--side__item--current{{ end }}">
               <a href="{{ .Permalink }}"><span class="navigation--side__index">{{ $index }}</span> {{ .Title | title }}</a>
             </li>
@@ -83,14 +98,14 @@
   {{ if eq .Kind "page" }}
   <div class="pagination">
     <div class="pagination-wrapper">
-      {{ with .PrevInSection }}
+      {{ with .NextInSection }}
         {{ $is_section := eq .Kind "section" }}
         {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
         {{ if (not (or $is_hide $is_section)) }}
           <a href="{{ .Permalink }}" class="pagination__prev">{{ with .Param "volumes" }}{{ index . 0 }}{{ end }}.{{ with .Param "issue" }}{{ . }}{{ end }} {{ .Title }}</a>
         {{ end }}
       {{ end }}
-      {{ with .NextInSection }}
+      {{ with .PrevInSection }}
         {{ $is_section := eq .Kind "section" }}
         {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
         {{ if (not (or $is_hide $is_section)) }}

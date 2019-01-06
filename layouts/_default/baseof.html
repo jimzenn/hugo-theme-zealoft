@@ -21,11 +21,13 @@
           <img class="container-logo" src="{{ . }}" alt="{{ $.Section }}">
           {{ else }}
           <b class="container-title">
-            {{- with ($.Param "menuTitle") -}}
-              {{- . -}}
-            {{- else -}}
-              {{- $.Section | humanize | upper -}}
-            {{- end -}}
+            {{ block "menu-title" . }} 
+              {{- with ($.Param "menuTitle") -}}
+                {{- . -}}
+              {{- else -}}
+                {{- $.Section | humanize -}}
+              {{- end -}}
+            {{ end }}
           </b>
           {{ end }}
         </div>
