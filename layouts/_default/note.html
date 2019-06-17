@@ -69,7 +69,7 @@
             {{ $volume := (index (.Param "Volumes") 0) }}
             {{ if (index $subjectData "subject-chapters") }}
               {{ if (not (or (eq $volume "D") (eq ($.Scratch.Get "prev_volume") $volume))) }} {{ $.Scratch.Set "prev_volume" (index (.Param "Volumes") 0) }}
-                <li class="navigation--side__heading"><span class="navigation--side__heading-index">{{ $volume }}</span>{{index (index $subjectData "subject-chapters") (add (int $volume) -1) }}</li>
+                <li class="navigation--side__heading"><span class="navigation--side__heading-index">{{ $volume }}</span>{{ (index (index $subjectData "subject-chapters") (add (int $volume) -1)) | title }}</li>
               {{ end }}
             {{ end }}
             {{ $issue := (.Param "Issue") }}
@@ -102,14 +102,14 @@
         {{ $is_section := eq .Kind "section" }}
         {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
         {{ if (not (or $is_hide $is_section)) }}
-          <a href="{{ .Permalink }}" class="pagination__prev">{{ with .Param "volumes" }}{{ index . 0 }}{{ end }}.{{ with .Param "issue" }}{{ . }}{{ end }} {{ .Title }}</a>
+          <a href="{{ .Permalink }}" class="pagination__prev">{{ with .Param "volumes" }}{{ index . 0 }}{{ end }}.{{ with .Param "issue" }}{{ . }}{{ end }} {{ .Title | title }}</a>
         {{ end }}
       {{ end }}
       {{ with .PrevInSection }}
         {{ $is_section := eq .Kind "section" }}
         {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
         {{ if (not (or $is_hide $is_section)) }}
-          <a href="{{ .Permalink }}" class="pagination__next">{{ with .Param "volumes" }}{{ index . 0 }}{{ end }}.{{ with .Param "issue" }}{{ . }}{{ end }} {{ .Title }}</a>
+          <a href="{{ .Permalink }}" class="pagination__next">{{ with .Param "volumes" }}{{ index . 0 }}{{ end }}.{{ with .Param "issue" }}{{ . }}{{ end }} {{ .Title | title }}</a>
         {{ end }}
       {{ end }}
     </div>

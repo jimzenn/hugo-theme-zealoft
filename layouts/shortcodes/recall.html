@@ -1,15 +1,14 @@
-<div class="block block--green">
-  <span class="block__title block__title--green">Lemma
-  {{with .Get "index"}}
-  {{ . }}
-  {{- end -}}
+<div class="block block--yellow {{ with .Get "status" }}block--status{{ end }}">
+  {{- with .Get "status" -}}<div class="block__status block__status--{{ . }}"></div>{{ end }}
+  <span class="block__title block__title--yellow">Recall
   {{- with .Get "name" -}}
-  : {{ . | title }}
+  : {{ . }}
   {{ end }}
   </span>
-  <div class="block__content block__content--green">
+  <div class="block__content block__content--yellow">
   {{ .Inner }}
   </div>
+
   <ul class="block__footer">
     <li class="block__footer-item">
       <a class="block__footer-link block__ask-question" href='mailto:zenn@ucla.edu?subject=Hello! I have a question&body=Hi, I have a question about ...'>ask a question</a>

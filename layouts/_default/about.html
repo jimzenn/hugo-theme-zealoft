@@ -77,6 +77,17 @@
           {{ end }}
         </ul>
       </div>
+      <div class="resume__section" id="resume__skills">
+        {{ $data_skills := index $data "Skills" }}
+        <h4 class="section__heading">Skills<div class="proficiency-scale">more proficient <span class="prof-1"></span><span class="prof-2"></span><span class="prof-3"></span><span class="prof-4"></span> less proficient</div></h4>
+        <ul class="section__list">
+          {{ range $data_skills }}
+            <li class="section__item">
+              <span class="item__key" style="font-weight: 500">{{ (index . "key") | safeHTML }}: </span>{{ (index . "value") | safeHTML }}
+            </li>
+          {{ end }}
+        </ul>
+      </div>
       <div class="resume__section" id="resume__section-work-experiences">
         {{ $data_experiences := index $data "Work Experiences" }}
         <h4 class="section__heading">Work Experiences</h4>
@@ -129,14 +140,12 @@
           {{ end }}
         </ul>
       </div>
-      <div class="resume__section" id="resume__skills">
-        {{ $data_skills := index $data "Skills" }}
-        <h4 class="section__heading">Skills & Interests<div class="proficiency-scale">more proficient <span class="prof-1"></span><span class="prof-2"></span><span class="prof-3"></span><span class="prof-4"></span> less proficient</div></h4>
+      <div class="resume__section" id="resume__interests">
+        {{ $data_interests := index $data "Interests" }}
+        <h4 class="section__heading">Interests</h4>
         <ul class="section__list">
-          {{ range $data_skills }}
-            <li class="section__item">
-              <span class="item__key" style="font-weight: 500">{{ (index . "key") | safeHTML }}: </span>{{ (index . "value") | safeHTML }}
-            </li>
+          {{ range $data_interests }}
+              {{ . | safeHTML }}
           {{ end }}
         </ul>
       </div>
