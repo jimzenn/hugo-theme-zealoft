@@ -2,14 +2,14 @@
 <html lang="{{ .Site.LanguageCode }}">
   <head>
     {{ partial "head.html" . }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/root.css?v={{ .Site.Params.version }}" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css?v={{ .Site.Params.version }}" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/header.css?v={{ .Site.Params.version }}" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/fonts.css?v={{ .Site.Params.version }}" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/article.css?v={{ .Site.Params.version }}" media="all">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/list.css?v={{ .Site.Params.version }}" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/root.css?v={{ .Site.Params.version }}">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css?v={{ .Site.Params.version }}">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/header.css?v={{ .Site.Params.version }}">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/fonts.css?v={{ .Site.Params.version }}">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/article.css?v={{ .Site.Params.version }}">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/list.css?v={{ .Site.Params.version }}">
     {{ block "links" . }} {{ end }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/responsive.css?v={{ .Site.Params.version }}" media="all">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/responsive.css?v={{ .Site.Params.version }}">
   </head>
 
   <body class="{{- block "type" . -}} {{- end -}}" >
@@ -21,6 +21,7 @@
           <img class="container-logo" src="{{ . }}" alt="{{ $.Section }}">
           {{ else }}
           <b class="container-title">
+
             {{ block "menu-title" . }} 
               {{- with ($.Param "menuTitle") -}}
                 {{- . -}}
