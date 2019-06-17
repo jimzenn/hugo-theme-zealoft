@@ -58,12 +58,12 @@
         </script>
       </div>
       <ul class="navigation--side__list" id="section-navigation">
-      {{ $uid := .UniqueID }}
+      {{ $uid := .File.UniqueID }}
       {{ $.Scratch.Set "prev_volume" -1 }}
       {{ range sort (where $.Site.Pages "Section" (.Section | urlize)) "Weight" "asc" }}
         {{ $is_section := eq .Kind "section" }}
         {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
-        {{ $is_current := eq .UniqueID $uid }}
+        {{ $is_current := eq .File.UniqueID $uid }}
         {{ if (not (or $is_hide $is_section)) }}
           {{ if eq .Section ($subjectTitle | urlize) }}
             {{ $volume := (index (.Param "Volumes") 0) }}
