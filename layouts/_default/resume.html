@@ -1,14 +1,14 @@
-{{- define "type" -}} about {{- end -}}
+{{- define "type" -}} resume {{- end -}}
 
 {{ define "links" }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/about.css?v={{ .Site.Params.version }}">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/resume.css?v={{ .Site.Params.version }}">
 {{ end }}
 
 {{ define "body" }}
 
   {{ $data := index $.Site.Data.resume .Params.resumeData }}
 
-  <main class="content content--about" role="main">
+  <main class="content content--resume" role="main">
     <button id="print-button" onclick="cleanPrint()">Print</button>
     <script charset="utf-8">
       function cleanPrint() {
@@ -30,7 +30,7 @@
         window.print();
       }
     </script>
-    <div class="resume">
+    <div class="resume-content">
       <div id="resume__info">
         <div id="resume__name">
           <span id="resume__legal-name">{{ .Site.Params.my_legal_name }}</span>

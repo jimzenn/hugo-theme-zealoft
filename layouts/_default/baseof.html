@@ -15,24 +15,21 @@
   <body class="{{- block "type" . -}} {{- end -}}" >
     {{ partial "header.html" . }}
     <div class="container" id="container">
-      {{ if not .IsHome }}
-        <div class="container-tag">
-          {{ with ($.Param "menuLogo") }}
-          <img class="container-logo" src="{{ . }}" alt="{{ $.Section }}">
-          {{ else }}
-          <b class="container-title">
-
-            {{ block "menu-title" . }}
-              {{- with ($.Param "menuTitle") -}}
-                {{- . -}}
-              {{- else -}}
-                {{- $.Section | humanize -}}
-              {{- end -}}
-            {{ end }}
-          </b>
-          {{ end }}
-        </div>
+      <div class="container-tag">
+      {{ with ($.Param "menuLogo") }}
+        <img class="container-logo" src="{{ . }}" alt="{{ $.Section }}">
+      {{ else }}
+        <b class="container-title">
+          {{- block "menu-title" . -}}
+            {{- with ($.Param "menuTitle") -}}
+              {{- . -}}
+            {{- else -}}
+              {{- $.Section | humanize -}}
+            {{- end -}}
+          {{- end -}}
+        </b>
       {{ end }}
+      </div>
       {{ block "body" . }} {{ end }}
     <div>
   </body>

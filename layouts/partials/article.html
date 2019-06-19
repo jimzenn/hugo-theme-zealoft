@@ -1,0 +1,13 @@
+<article class="article">
+
+  {{ if not (isset .Params "content-only") }}
+  <h1 class="article__title">{{ .Title }}</h1>
+  {{ partial "article-meta.html" . }}
+  <hr class="article__seperator">
+  {{ end }}
+
+  <div class="article__content">
+    {{ .Content }}
+  </div>
+</article>
+

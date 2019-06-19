@@ -1,8 +1,8 @@
-.body.about {
+.body.resume {
   min-width: 850px;
 }
 
-.content--about {
+.content--resume {
   padding-top: 50px !important;
   min-height: unset;
   margin-bottom: 70px;
@@ -14,7 +14,7 @@
    align-self: flex-end;
 }
 
-.resume {
+.resume-content {
   width: 100%;
 }
 
@@ -32,6 +32,7 @@
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: .1px;
+  text-transform: uppercase;
 }
 
 #resume__expected-graduation {
@@ -209,7 +210,7 @@
   .resume {
     font-size: 12px;
   }
-  .content.content--about {
+  .content.content--resume {
     padding-left: 30px;
     padding-right: 30px;
   }

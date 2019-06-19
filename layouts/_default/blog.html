@@ -1,0 +1,31 @@
+{{- define "type" -}} home {{- end -}}
+
+{{ define "links" }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/jumbotron.css?v={{ .Site.Params.version }}">
+{{ end }}
+
+{{ define "body" }}
+
+  {{ partial "jumbotron.html" . }}
+
+  <main class="content" role="main">
+
+    <div class="article-list">
+      {{ range where .Site.Pages "Section" "blog" }}
+        {{ $is_section := eq .Kind "section" }}
+        {{ $is_hide := and (isset .Params "hide") (.Param "hide") }}
+        {{ if (not (or $is_hide $is_section)) }}
+          {{ partial "list-item.html" . }}
+        {{ end }}
+      {{ end }}
+    </div>
+
+  </main>
+
+  {{ partial "footer.html" . }}
+
+{{ end }}
+
+
+
+

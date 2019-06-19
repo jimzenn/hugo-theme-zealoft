@@ -27,9 +27,9 @@
     padding-right: calc( 50vw - 490px + 0.5rem);
   }
 
-  body.about .content,
-  body.about .pagination,
-  body.about .footer {
+  body.resume .content,
+  body.resume .pagination,
+  body.resume .footer {
     padding-left: calc( 50vw - 400px + 0.5rem);
     padding-right: calc( 50vw - 400px + 0.5rem);
   }
@@ -139,10 +139,6 @@
     font-size: 14px;
   }
 
-  /* body:not(.home) .container { */
-  /*   border-top-left-radius: 1.5rem; */
-  /* } */
-
   .content {
     padding-top: 15px;
   }
@@ -248,7 +244,7 @@
     margin-top: 2px;
   }
 
-  .content--about {
+  .content--resume {
     padding-top: 0;
   }
 
