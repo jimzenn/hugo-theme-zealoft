@@ -53,8 +53,12 @@
 }
 
 @keyframes jumbotron__expand-button-breath {
-  30%   { opacity: .3; }
-  40%   { opacity: .8; }
+  30% {
+    opacity: .3;
+  }
+  40% {
+    opacity: .8;
+  }
 }
 
 #jumbotron__expand-button svg {
@@ -68,14 +72,13 @@
 
 @media (min-width: 1069px) {
   .jumbotron {
-    height: 256px;
+    height: 512px;
   }
 }
 
-
 @media (max-width: 1068px) {
   .jumbotron {
-    height: 256px;
+    height: 512px;
   }
 }
 
