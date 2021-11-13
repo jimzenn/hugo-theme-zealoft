@@ -2,8 +2,8 @@
   font-size: 16px;
 
   /* fonts */
-  --display-font: "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --text-font: "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --display-font: "Inter", "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --text-font: "Inter", "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   --math-font: "CMU Serif", serif;
   --serif-font: "Untitled Serif", serif;
   --monospaced-font: "SF Mono", 'Pragmata Pro', 'source-code-pro', monospace;

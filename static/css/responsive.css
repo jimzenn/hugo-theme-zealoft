@@ -37,30 +37,25 @@
   .article__title {
     font-size: 40px;
     line-height: 1.05;
-    letter-spacing: 0.32px;
   }
 
   .article__title--list-item {
     font-size: 32px;
     line-height: 35px;
-    letter-spacing: 0.352px;
   }
 
   .article__content h1 {
     font-size: 32px;
-    letter-spacing: 0.352px;
     line-height: 35px;
   }
 
   .article__content h2 {
     font-size: 24px;
-    letter-spacing: 0.36px;
     line-height: 29px;
   }
 
   .article__content h3 {
     font-size: 17px;
-    letter-spacing: -.357px;
     line-height: 26px;
   }
 
@@ -98,31 +93,26 @@
   .article__title {
     font-size: 34px;
     line-height: 1.08824;
-    letter-spacing: .34px;
   }
 
   .article__title--list-item {
     font-size: 28px;
     line-height: 31px;
-    letter-spacing: 0.36px;
   }
 
   .article__content h1 {
     font-size: 28px;
     line-height: 31px;
-    letter-spacing: 0.336px;
   }
 
   .article__content h2 {
     font-size: 22px;
-    letter-spacing: 0.352px;
     line-height: 27px;
   }
 
   .article__content h3 {
     font-size: 17px;
     line-height: 26px;
-    letter-spacing: -.357px;
   }
 
   .article__toc {
@@ -210,31 +200,26 @@
   .article__title {
     font-size: 28px;
     line-height: 1.1073;
-    letter-spacing: .336px;
   }
 
   .article__title--list-item {
     font-size: 24px;
     line-height: 29px;
-    letter-spacing: 0.36px;
   }
 
   .article__content h1 {
     font-size: 24px;
-    letter-spacing: 0.36px;
     line-height: 29px;
   }
 
   .article__content h2 {
     font-size: 19px;
-    letter-spacing: 0.342px;
     line-height: 24px;
   }
 
   .article__content h3 {
     font-size: 17px;
     line-height: 26px;
-    letter-spacing: -.357px;
   }
 
   .article__toc {
@@ -310,4 +295,4 @@
   .article--list-item {
     margin-top: 40px;
   }
-
+}

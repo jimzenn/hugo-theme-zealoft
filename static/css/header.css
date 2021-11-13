@@ -37,8 +37,7 @@ body {
 .header__title * {
   color: white;
   text-decoration: none;
-  letter-spacing: -.025em;
-  text-shadow: 0 0 5px rgba(0,0,0,0.2);
+    text-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 .header__site-logo-link--home {
@@ -249,13 +248,16 @@ body {
   position: absolute;
   color: white;
   transform: translateY(-100%) translateX(4.5rem);
-  letter-spacing: -.025em;
   font-size: 18.5px;
   transition: transform 0.42s var(--jerk-curve);
   height: 48px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+}
+
+.container-tag .container-title {
+  font-weight: 500;
 }
 
 .container-logo {

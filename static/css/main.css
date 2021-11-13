@@ -48,12 +48,7 @@ body {
   font-family: var(--text-font);
   font-size: 17px;
   line-height: 1.53;
-  letter-spacing: -.021em;
   color: var(--text-color);
-  font-synthesis: none;
-  font-feature-settings: 'kern';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -172,8 +167,7 @@ span[note]:hover:after {
   font-weight: 600;
   color: #BBB;
   height: 108px;
-  letter-spacing: 0.128px;
-  line-height: 36px;
+    line-height: 36px;
   text-align: center;
   margin: auto;
   width: 100%;
