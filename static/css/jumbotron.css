@@ -8,8 +8,13 @@
   background-repeat: no-repeat;
   background-color: #DDD;
   background-position: center center;
-  background-size: 100% auto;
+  background-size: 100.1% auto;
   transition: height 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), border-radius 0.42s var(--jerk-curve);
+}
+
+.jumbotron__expand-button {
+  display: none;
+  /* hide by default, should be turned on with the script */
 }
 
 .jumbotron__text {
