@@ -9,7 +9,6 @@
   background-color: #DDD;
   background-position: center center;
   background-size: 100% auto;
-  margin-bottom: 70px;
   transition: height 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), border-radius 0.42s var(--jerk-curve);
 }
 

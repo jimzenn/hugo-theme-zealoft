@@ -17,7 +17,6 @@
             {{ partial "list-item.html" . }}
           {{ end }}
         {{ end }}
-        <hr />
         {{ range .Paginator.Pages }}
           {{ if (not (isset .Params "top")) }}
             {{ partial "list-item.html" . }}
