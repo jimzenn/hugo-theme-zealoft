@@ -16,6 +16,10 @@
   /* curve */
   --jerk-curve: cubic-bezier(.8, 0, .2, 1);
 
+  /* length variables */
+  --header-height: 64px;
+  --container-width: 88vw;
+
   /* Bootstrap Colors */
   --blue-text-color: #004085;
   --blue-background-color: #CCE6FF;
@@ -36,4 +40,3 @@
   --red-border-color: #f5c6cb;
   --red-saturated-color: #FC1509;
 }
-

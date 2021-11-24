@@ -155,8 +155,8 @@
 @media (min-width: 1069px) {
   .navigation {
     height: 97px;
-    padding-left: calc(50vw - 490px + 0.5rem);
-    padding-right: calc(50vw - 490px + 0.5rem);
+    padding-left: calc(var(--container-width) / 2 - 490px + 0.5rem);
+    padding-right: calc(var(--container-width) / 2 - 490px + 0.5rem);
   }
 
   .navigation__title {

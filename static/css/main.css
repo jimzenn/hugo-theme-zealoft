@@ -58,7 +58,6 @@ body {
   min-height: 100vh;
   z-index: 0;
   transition: transform 0.5s var(--jerk-curve), border-radius 0.5s var(--jerk-curve), box-shadow 0.5s var(--jerk-curve);
-  box-shadow: 0 0 10px rgba(0,0,0, .1), -90vw 80px 0 #D4D4D4, -90vw 80px 10px rgba(0,0,0, .1), -100vw 10px 0 #9F9F9F, -100vw 10px 10px rgba(0,0,0, .1);
 }
 
 a {
