@@ -2,12 +2,19 @@
   min-width: 850px;
 }
 
+@media (min-width: 1069px) {
+  .container {
+    --container-width: 840px;
+  }
+}
+
 .content--resume {
   padding-top: 30px !important;
   min-height: unset;
   margin-bottom: 70px;
   color: black;
   line-height: 1.8;
+  box-sizing: border-box;
 }
 
 #print-button {
