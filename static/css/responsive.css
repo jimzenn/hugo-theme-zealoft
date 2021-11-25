@@ -6,10 +6,6 @@
     width: var(--container-width);
     margin: auto;
   }
-  .jumbotron {
-    height: 512px;
-    background-position: center center;
-  }
   .content {
     padding-top: 160px;
   }
@@ -54,10 +50,6 @@
   .container {
     width: var(--container-width);
     margin: auto;
-  }
-  .jumbotron {
-    height: 256px;
-    background-position: center center;
   }
   .content {
     padding-top: 85px;
@@ -123,11 +115,6 @@
   }
   .content {
     padding-top: 85px;
-  }
-  .jumbotron {
-    height: 200px;
-    background-position: center center;
-    background-size: cover;
   }
   #jumbotron__expand-button {
     display: none;
