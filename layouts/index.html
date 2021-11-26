@@ -1,36 +1,53 @@
 {{- define "type" -}} home {{- end -}}
 
 {{ define "links" }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/jumbotron.css?v={{ .Site.Params.version }}">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/home.css?v={{ .Site.Params.version }}">
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/jumbotron.css?v={{ .Site.Params.version }}">
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/home.css?v={{ .Site.Params.version }}">
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/hello.css?v={{ .Site.Params.version }}">
 {{ end }}
 
 {{ define "body" }}
 
-  {{ partial "jumbotron.html" . }}
+{{/* {{ partial "jumbotron.html" . }} */}}
 
-  <main class="content" role="main">
+<div id="hello">
+  <div id="hello-color-block">
+    
+  </div>
+  <div id="hello-text-block">
+    <span id="hello-line">
+      Hello, I'm Jim Zenn.
+    </span>
+    <span id="hello-subline">
+        Software engineer. I do graphic design for fun.
+    </span>
+    <p id="hello-p">
+      he / him. <br>
+      Lives in Menlo Park, California. <br>
+      <br>
+      Also known as 曾庆伟.
+    </p>
+  </div>
+</div>
 
-    {{ partial "article.html" . }}
+<main class="content" role="main">
 
-    <!-- <div class="article-list"> -->
-    <!--   {{ range where .Site.Pages "Section" "blog" }} -->
-    <!--     {{ $is_section := eq .Kind "section" }} -->
-    <!--     {{ $is_hide := and (isset .Params "hide") (.Param "hide") }} -->
-    <!--     {{ if (not (or $is_hide $is_section)) }} -->
-    <!--       {{ partial "list-item.html" . }} -->
-    <!--     {{ end }} -->
-    <!--   {{ end }} -->
-    <!-- </div> -->
+  {{ partial "article.html" . }}
+
+  <!-- <div class="article-list"> -->
+  <!--   {{ range where .Site.Pages "Section" "blog" }} -->
+  <!--     {{ $is_section := eq .Kind "section" }} -->
+  <!--     {{ $is_hide := and (isset .Params "hide") (.Param "hide") }} -->
+  <!--     {{ if (not (or $is_hide $is_section)) }} -->
+  <!--       {{ partial "list-item.html" . }} -->
+  <!--     {{ end }} -->
+  <!--   {{ end }} -->
+  <!-- </div> -->
 
   <!-- {{ partial "pagination.html" . }} -->
 
-  </main>
+</main>
 
-  {{ partial "footer.html" . }}
+{{ partial "footer.html" . }}
 
 {{ end }}
-
-
-
-
