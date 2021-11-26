@@ -11,6 +11,7 @@
   /* color */ 
   --text-color: #333;
   --link-color: #0070c9;
+  --container-color: #EEEAE1;
 
   /* curve */
   --jerk-curve: cubic-bezier(.8, 0, .2, 1);
@@ -23,7 +24,7 @@
   --blue-text-color: #004085;
   --blue-background-color: #CCE6FF;
   --blue-border-color: #b8daff;
-  --green-text-color: #0c5460;
+  --green-text-color: #202020;
   --green-background-color: #d1ecf1;
   --green-border-color: #bee5eb;
   --green-saturated-color: #00AB22;
