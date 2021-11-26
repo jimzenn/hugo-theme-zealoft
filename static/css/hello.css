@@ -55,6 +55,18 @@
     letter-spacing: -.6px;
 }
 
+
+@media (min-width: 1069px) {
+    #hello {
+        padding-top: 120px;
+        min-width: 720px;
+    }
+
+    #hello #hello-text-block {
+        padding-left: 60px;
+    }
+}
+
 @media (max-width: 1068px) {
     #hello {
         padding-left: 15px;
@@ -68,6 +80,7 @@
 
 @media (max-width: 735px) {
     #hello {
+        padding-top: 50px;
         padding-left: 15px;
         padding-right: 15px;
         min-width: 512px;
