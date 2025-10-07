@@ -8,14 +8,15 @@
 
   <main class="content" role="main">
     <div class="article-list">
-      {{ range where .Site.Pages "Section" .Section }}
+      {{ $paginator := .Paginate (where .Site.RegularPages "Section" .Section) }}
+      {{ range $paginator.Pages }}
         {{ if (not (isset .Params "hide")) }}
         {{ partial "list-item.html" . }}
         {{ end }}
       {{ end }}
     </div>
 
-  <!-- {{ partial "pagination.html" . }} -->
+  {{ partial "pagination.html" . }}
 
   </main>
 
