@@ -1,50 +1,38 @@
 {{- define "type" -}} home {{- end -}}
 
 {{ define "links" }}
-<link rel="stylesheet" href="{{ .Site.BaseURL }}css/jumbotron.css?v={{ .Site.Params.version }}">
-<link rel="stylesheet" href="{{ .Site.BaseURL }}css/home.css?v={{ .Site.Params.version }}">
-<link rel="stylesheet" href="{{ .Site.BaseURL }}css/hello.css?v={{ .Site.Params.version }}">
+{{ $jumbotron := resources.Get "css/jumbotron.css" }}
+{{ $home := resources.Get "css/home.css" }}
+{{ $hello := resources.Get "css/hello.css" }}
+<link rel="stylesheet" href="{{ $jumbotron.Permalink }}">
+<link rel="stylesheet" href="{{ $home.Permalink }}">
+<link rel="stylesheet" href="{{ $hello.Permalink }}">
 {{ end }}
 
 {{ define "body" }}
-
-{{/* {{ partial "jumbotron.html" . }} */}}
 
 <div id="hello">
   <div id="hello-color-block">
     
   </div>
   <div id="hello-text-block">
+    {{ with .Site.Params.author }}
     <span id="hello-line">
-      Hello, I'm Jim Zenn.
+      {{ .hello_line }}
     </span>
     <span id="hello-subline">
-        Software engineer. I do graphic design for fun.
+      {{ .hello_subline }}
     </span>
     <p id="hello-p">
-      he / him. <br>
-      Lives in Menlo Park, California. <br>
-      <br>
-      Also known as 曾庆伟.
+      {{ .hello_p | safeHTML }}
     </p>
+    {{ end }}
   </div>
 </div>
 
 <main class="content" role="main">
 
   {{ partial "article.html" . }}
-
-  <!-- <div class="article-list"> -->
-  <!--   {{ range where .Site.Pages "Section" "blog" }} -->
-  <!--     {{ $is_section := eq .Kind "section" }} -->
-  <!--     {{ $is_hide := and (isset .Params "hide") (.Param "hide") }} -->
-  <!--     {{ if (not (or $is_hide $is_section)) }} -->
-  <!--       {{ partial "list-item.html" . }} -->
-  <!--     {{ end }} -->
-  <!--   {{ end }} -->
-  <!-- </div> -->
-
-  <!-- {{ partial "pagination.html" . }} -->
 
 </main>
 
