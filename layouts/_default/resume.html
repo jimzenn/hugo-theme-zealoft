@@ -148,9 +148,7 @@
         {{ $data_interests := index $data "Interests" }}
         <h4 class="section__heading">Interests</h4>
         <ul class="section__list">
-          {{ range $data_interests }}
-              {{ . | safeHTML }}
-          {{ end }}
+          <li class="section__item">{{ delimit $data_interests ", " | safeHTML }}.</li>
         </ul>
       </div>
     </div>

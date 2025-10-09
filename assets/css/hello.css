@@ -5,14 +5,17 @@
     width: 60%;
     margin: auto;
     padding: 90px 30px 0 30px;
-    color: #032d53;
+    color: var(--backdrop-color);
     min-width: 640px;
 }
 
-#hello #hello-color-block {
-    background-color: #d40a0a;
-    height: 300px;
+#hello #hello-kaleidoscope {
+    display: block;
+    width: 15%;
+    overflow: hidden;
+    height: 338px;
     flex-grow: 1;
+    background-color: "#d40c0b";
 }
 
 #hello #hello-text-block {
@@ -33,33 +36,39 @@
 
 #hello #hello-line {
     font-weight: 600;
-    font-size: 36px;
-    letter-spacing: -.03em;
-    padding: 20px 0 40px;
+    font-size: 32px;
+    letter-spacing: -.05em;
+    padding: 20px 0 20px;
 }
 
 #hello #hello-subline {
     position: relative;
     font-weight: 500;
-    font-size: 20px;
-    letter-spacing: -.6px;
+    font-size: 24px;
     padding: .2em .5em .2em .5em;
     background-color: rgba(238, 187, 45, .85);
     margin-left: -.5em;
+    margin-bottom: 20px;
+    letter-spacing: -.04em;
     width: fit-content;
 }
 
 #hello #hello-p {
     font-weight: 500;
-    font-size: 20px;
-    letter-spacing: -.6px;
+    font-size: 24px;
+    letter-spacing: -.03em;
 }
 
 
 @media (min-width: 1069px) {
     #hello {
         padding-top: 120px;
-        min-width: 720px;
+        width: 1028px;
+        max-width: 100%;
+    }
+
+    #hello #hello-line {
+        font-size: 36px;
     }
 
     #hello #hello-text-block {
@@ -71,33 +80,49 @@
     #hello {
         padding-left: 15px;
         padding-right: 15px;
+        width: 720px;
+        max-width: 100%;
+    }
+
+    #hello #hello-kaleidoscope {
+        height: 300px;
     }
 
     #hello #hello-text-block {
         padding-left: 50px;
+    }
+
+    #hello #hello-text-block #hello-line {
+        font-size: 32px;
+    }
+
+    #hello #hello-text-block #hello-subline,
+    #hello #hello-text-block #hello-p {
+        font-size: 20px;
     }
 }
 
 @media (max-width: 735px) {
     #hello {
         padding-top: 50px;
-        padding-left: 15px;
-        padding-right: 15px;
-        min-width: 550px;
+        padding-left: 20px;
+        padding-right: 20px;
+        min-width: 440px;
+    }
+
+    #hello #hello-kaleidoscope {
+        height: 264px;
     }
 
     #hello #hello-text-block {
-        padding-left: 36px;
+        padding-left: 30px;
     }
 
     #hello #hello-text-block #hello-line {
-        font-size: 30px;
+        font-size: 28px;
     }
 
-    #hello #hello-text-block #hello-subline {
-        font-size: 16px;
-    }
-
+    #hello #hello-text-block #hello-subline,
     #hello #hello-text-block #hello-p {
         font-size: 16px;
     }
