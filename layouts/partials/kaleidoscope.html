@@ -1,0 +1,74 @@
+<div id="hello-kaleidoscope">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.5/p5.min.js" integrity="sha512-jOTg6ikYiHx1LvbSOucnvZi4shXbaovZ91+rfViIiUFLgAJK+k1oQtGEaLvDB8rsZwEfUksTgmhrxdvEDykuzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    const parentDivName = "hello-kaleidoscope";
+    const boxWid = 10;
+    const fps = 2;
+    const gridLn = 45;
+    const colorFor1 = "#df1111";
+    const colorFor0 = "#d40c0b";
+
+    let tableArr = Array(gridLn).fill(0).map(() => Array(gridLn).fill(0).map(() => Math.round(Math.random())));
+    let isRunning = true;
+
+    function setup() {
+        frameRate(fps);
+        const myCanvas = createCanvas(450, 338);
+        myCanvas.parent(parentDivName);
+        noStroke();
+    }
+
+    function draw() {
+        background(colorFor0);
+        for (let r = 0; r < gridLn; r++) {
+            for (let c = 0; c < gridLn; c++) {
+                if (tableArr[r][c] === 1) {
+                    fill(colorFor1);
+                    rect(r * boxWid, c * boxWid, boxWid, boxWid);
+                }
+            }
+        }
+        if (isRunning) {
+            computeNextGeneration();
+        }
+    }
+
+    function mousePressed() {
+        const row = Math.floor(mouseX / boxWid);
+        const col = Math.floor(mouseY / boxWid);
+        if (row >= 0 && row < gridLn && col >= 0 && col < gridLn) {
+            tableArr[row][col] = 1 - tableArr[row][col];
+        }
+    }
+
+    function computeNextGeneration() {
+        const nextTable = tableArr.map(arr => [...arr]);
+        for (let r = 0; r < gridLn; r++) {
+            for (let c = 0; c < gridLn; c++) {
+                const neighbors = countNeighbors(r, c);
+                const cell = tableArr[r][c];
+                if (cell === 1 && (neighbors < 2 || neighbors > 3)) {
+                    nextTable[r][c] = 0;
+                } else if (cell === 0 && neighbors === 3) {
+                    nextTable[r][c] = 1;
+                }
+            }
+        }
+        tableArr = nextTable;
+    }
+
+    function countNeighbors(row, col) {
+        let count = 0;
+        for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+                if (i === 0 && j === 0) continue;
+                const r = (row + i + gridLn) % gridLn;
+                const c = (col + j + gridLn) % gridLn;
+                count += tableArr[r][c];
+            }
+        }
+        return count;
+    }
+</script>
+</div>

@@ -12,9 +12,7 @@
 {{ define "body" }}
 
 <div id="hello">
-  <div id="hello-color-block">
-    
-  </div>
+  {{ partial "kaleidoscope.html" . }}
   <div id="hello-text-block">
     {{ with .Site.Params.author }}
     <span id="hello-line">
