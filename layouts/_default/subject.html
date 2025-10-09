@@ -1,8 +1,10 @@
 {{- define "type" -}} subject wide {{- end -}}
 
 {{ define "links" }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/subject.css?v={{ .Site.Params.version }}">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/navigation.css?v={{ .Site.Params.version }}">
+    {{ $subject_css := resources.Get "css/subject.css" }}
+    <link rel="stylesheet" href="{{ $subject_css.Permalink }}">
+    {{ $navigation_css := resources.Get "css/navigation.css" }}
+    <link rel="stylesheet" href="{{ $navigation_css.Permalink }}">
 {{ end }}
 
 {{ define "menu-title" }}
